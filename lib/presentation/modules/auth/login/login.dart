@@ -13,12 +13,10 @@ import '../../../../core/resources/app_assets.dart';
 import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/locale_keys.g.dart';
 import '../../../../core/resources/values_manager.dart';
-import '../../../../data/app_urls/app_url.dart';
 import '../../../../data/repository/SaveUserData.dart';
 import '../../../../injection.dart';
 import '../../../component/component.dart';
 import '../../../component/svg_icon.dart';
-import '../../layout/children/setting/web_view/web_view_screen.dart';
 import '../auth_view_model.dart';
 import 'widgets/country_sheet.dart';
 
@@ -218,14 +216,27 @@ class _LoginState extends State<Login> {
   _buildForm() {
     return Form(
       key: _formKey,
-      child: CustomTextFieldPhone(
-        noBorder: false,
-        validationMSG:
+      child: Column(
+        children: [
+          CustomTextFieldPhone(
+            noBorder: false,
+            validationMSG:
             Provider.of<AuthViewModel>(context, listen: true).validationMSG,
-        hint: LocaleKeys.phoneNumber.tr(),
-        iconSVG: Assets.phoneIcon,
-        controller: Provider.of<AuthViewModel>(context, listen: false).phoneController,
-      ),
+            hint: LocaleKeys.phoneNumber.tr(),
+            iconSVG: Assets.phoneIcon,
+            controller: Provider.of<AuthViewModel>(context, listen: false).phoneController,
+          ),
+          VerticalSpace(AppSize.s8.h),
+          CustomTextFieldPhone(
+            noBorder: false,
+            validationMSG: Provider.of<AuthViewModel>(context, listen: true).validationMSG,
+            hint: LocaleKeys.password.tr(),
+            iconSVG: Assets.svgPasswordIcon,
+            hasIcon: true,
+            controller: Provider.of<AuthViewModel>(context, listen: false).passwordController,
+          ),
+        ],
+      )
     );
   }
 

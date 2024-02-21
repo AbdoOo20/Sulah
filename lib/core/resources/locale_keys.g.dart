@@ -16,6 +16,7 @@ abstract class  LocaleKeys {
   static const writeExperience = 'WriteExperience';
   static const confirm = 'confirm';
   static const phoneNumber = 'phoneNumber';
+  static const password = 'password';
   static const saudiArabia = 'saudiArabia';
   static const resendCodeAgain = 'resendCode';
   static const createAnAccount = 'createAnAccount';

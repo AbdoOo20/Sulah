@@ -216,7 +216,8 @@
   "all": "All",
   "c": "Store not available",
   "Write message...": "Write message...",
-  "storeIsCurrentlyUnavailable":  "The store is currently unavailable",
+  "storeIsCurrentlyUnavailable": "The store is currently unavailable",
   "productIsNotAvailable": "Product is not available",
-  "sula": "Siulah"
+  "sula": "Siulah",
+  "password": "Password"
 }

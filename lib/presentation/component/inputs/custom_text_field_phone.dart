@@ -8,6 +8,7 @@ import 'package:khedmaty/core/extensions/num_extensions.dart';
 import '../../../../core/res/text_styles.dart';
 import '../../../../core/resources/app_assets.dart';
 import '../../../../core/resources/locale_keys.g.dart';
+import '../../../core/resources/app_colors.dart';
 import 'base_form.dart';
 
 class CustomTextFieldPhone extends StatelessWidget {
@@ -21,6 +22,7 @@ class CustomTextFieldPhone extends StatelessWidget {
   final bool readOnly;
   final bool autoValidate;
   final bool noBorder;
+  final bool hasIcon;
   final bool isRequired;
   final bool autofocus;
   final bool enable;
@@ -61,6 +63,7 @@ class CustomTextFieldPhone extends StatelessWidget {
     this.autoValidate = false,
     this.readOnly = false,
     this.noBorder = true,
+    this.hasIcon = false,
     this.isRequired = true,
     this.autofocus = false,
     this.enable = true,
@@ -81,7 +84,8 @@ class CustomTextFieldPhone extends StatelessWidget {
     this.validateFunc,
     this.onSubmit,
     this.controller,
-    this.textInputAction, this.validationMSG,
+    this.textInputAction,
+    this.validationMSG,
   }) : super(key: key);
 
   @override
@@ -89,9 +93,24 @@ class CustomTextFieldPhone extends StatelessWidget {
     return CustomTextField(
       background: background,
       prefixIcon: iconData,
-      prefixWidget: SizedBox(height: 20.r,width: 20.r,child: Center(child: SvgPicture.asset(iconSVG??Assets.svgPhoneIcon,height: 20.r,width: 20.r))),
+      prefixWidget: SizedBox(
+        height: 20.r,
+        width: 20.r,
+        child: Center(
+          child: hasIcon
+              ? Icon(
+                  Icons.visibility_outlined,
+                  size: 20.r,
+                  color: AppColors.semeBlack,
+                )
+              : SvgPicture.asset(
+                  iconSVG ?? Assets.svgPhoneIcon,
+                  height: 20.r,
+                  width: 20.r,
+                ),
+        ),
+      ),
       defaultValue: defaultValue,
-
       hint: hint,
       onTap: onTap,
       autoValidate: autoValidate,
@@ -107,9 +126,9 @@ class CustomTextFieldPhone extends StatelessWidget {
       onChange: onChange,
       suffixIconData: suffixIconData,
       validateFunc: validateFunc ??
-              (value) {
+          (value) {
             if ((value ?? '').length < 9) {
-              return el.tr(validationMSG??LocaleKeys.msgInvalidPhoneNumber);
+              return el.tr(validationMSG ?? LocaleKeys.msgInvalidPhoneNumber);
             }
 
             if (validateFunc != null) return validateFunc!(value);
@@ -118,11 +137,7 @@ class CustomTextFieldPhone extends StatelessWidget {
       suffixText: suffixText,
       type: TextInputType.phone,
       controller: controller,
-
-      suffixData:
-       suffixData ,
-
-
+      suffixData: suffixData,
       onSubmit: onSubmit,
       readOnly: readOnly,
       autofocus: autofocus,
@@ -132,4 +147,3 @@ class CustomTextFieldPhone extends StatelessWidget {
     );
   }
 }
-
