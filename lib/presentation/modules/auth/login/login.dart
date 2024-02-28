@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -13,10 +15,12 @@ import '../../../../core/resources/app_assets.dart';
 import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/locale_keys.g.dart';
 import '../../../../core/resources/values_manager.dart';
+import '../../../../data/app_urls/app_url.dart';
 import '../../../../data/repository/SaveUserData.dart';
 import '../../../../injection.dart';
 import '../../../component/component.dart';
 import '../../../component/svg_icon.dart';
+import '../../layout/children/setting/web_view/web_view_screen.dart';
 import '../auth_view_model.dart';
 import 'widgets/country_sheet.dart';
 
@@ -29,11 +33,14 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+
   void _onSubmit(BuildContext context) async {
     if (_formKey.currentState != null) {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
-        String phone = Provider.of<AuthViewModel>(context, listen: false).phoneController.text;
+        String phone = Provider.of<AuthViewModel>(context, listen: false)
+            .phoneController
+            .text;
         if (phone.isEmpty) {
           Provider.of<AuthViewModel>(context, listen: false).validationMsg =
               LocaleKeys.phoneMustBeEntered.tr();
@@ -42,25 +49,33 @@ class _LoginState extends State<Login> {
               LocaleKeys.msgInvalidPhoneNumber.tr();
         } else {
           getLocation(true);
-          Provider.of<AuthViewModel>(context, listen: false).login(phone: phone, context: context);
+          Provider.of<AuthViewModel>(context, listen: false)
+              .login(phone: phone, context: context);
           // Provider.of<AuthViewModel>(context, listen: false).sendOTPFirebase(context, phone);
         }
       }
     }
   }
-  SaveUserData saveUserData =getIt();
-  bool isLoading=false;
-  bool  loading =false;
+
+  SaveUserData saveUserData = getIt();
+  bool isLoading = false;
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     String lang = saveUserData.getLang();
+    log(LocaleKeys.termsAndConditions.tr().toString());
+    log(AppURL.kBaseURL.toString());
+    log(lang.toString());
     return CustomScaffold(
       body: Container(
         padding: EdgeInsets.only(
             right: AppSize.s16.w, left: AppSize.s16.w, bottom: AppSize.s8.h),
         child: ListAnimator(
           children: [
-            SizedBox(height: 50.h,),
+            SizedBox(
+              height: 50.h,
+            ),
             SVGIcon(
               Assets.logo,
               height: 90.h,
@@ -69,7 +84,8 @@ class _LoginState extends State<Login> {
             Text(
               tr(LocaleKeys.tittleLogin),
               style: const TextStyle()
-                  .titleStyle(fontSize: FontSize.s28.sp).customColor(AppColors.gray),
+                  .titleStyle(fontSize: FontSize.s28.sp)
+                  .customColor(AppColors.gray),
             ),
             Text(
               tr(LocaleKeys.bodyLogin),
@@ -97,8 +113,8 @@ class _LoginState extends State<Login> {
                       children: [
                         SVGIcon(
                           Provider.of<AuthViewModel>(context, listen: true)
-                              .phoneCode ==
-                              '+966'
+                                      .phoneCode ==
+                                  '+966'
                               ? Assets.flag
                               : Assets.flagEgypt,
                           width: 48.w,
@@ -107,8 +123,8 @@ class _LoginState extends State<Login> {
                         HorizontalSpace(12.w),
                         Text(
                           Provider.of<AuthViewModel>(context, listen: true)
-                              .phoneCode ==
-                              '+966'
+                                      .phoneCode ==
+                                  '+966'
                               ? LocaleKeys.saudiArabia.tr()
                               : LocaleKeys.egypt.tr(),
                           style: const TextStyle()
@@ -141,8 +157,12 @@ class _LoginState extends State<Login> {
                   textAlign: TextAlign.center,
                 ),
                 InkWell(
-                  // onTap: (){push(WebViewScreen(title: LocaleKeys.termsAndConditions.tr(),
-                  //   url: '${AppURL.kBaseURL}webView/termis_condition?lang=${lang}',));},
+                  onTap: () {
+                    push(WebViewScreen(
+                      title: LocaleKeys.termsAndConditions.tr(),
+                      url: 'https://sulah.sa/${lang}/privacy-policy',
+                    ));
+                  },
                   child: Text(
                     LocaleKeys.termsAndConditions.tr(),
                     style: const TextStyle()
@@ -166,8 +186,12 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 InkWell(
-                  // onTap: (){push(WebViewScreen(title: LocaleKeys.privacyPolicy.tr(),
-                  //   url: '${AppURL.kBaseURL}webView/termis_condition?lang=${lang}',));},
+                  onTap: () {
+                    push(WebViewScreen(
+                      title: LocaleKeys.privacyPolicy.tr(),
+                      url: 'https://sulah.sa/${lang}/privacy-policy',
+                    ));
+                  },
                   child: Text(
                     LocaleKeys.privacyPolicy.tr(),
                     style: const TextStyle()
@@ -185,7 +209,6 @@ class _LoginState extends State<Login> {
                 ),
               ],
             ),
-
             VerticalSpace(AppSize.s64.h),
             VerticalSpace(AppSize.s16.h),
             CustomButton(
@@ -198,14 +221,29 @@ class _LoginState extends State<Login> {
             ),
             VerticalSpace(AppSize.s4.h),
             InkWell(
-              onTap:loading==true?(){}:
-                  (){getLocation(false).then((value) =>   pushAndRemoveUntil(const CustomBottomNavigationBar(0)));},
-              child:loading==true?Center(child: SizedBox(width: 20.w,height: 20.h,child: const CircularProgressIndicator(strokeWidth: 2.5,color: AppColors.primaryColor,),)): Text(tr("loginAsAVisitor"),
-                style:  const TextStyle()
-                    .bodyStyle(fontSize: FontSize.s14.sp)
-                    .customColor(AppColors.black),
-                textAlign: TextAlign.center,
-              ),
+              onTap: loading == true
+                  ? () {}
+                  : () {
+                      getLocation(false).then((value) => pushAndRemoveUntil(
+                          const CustomBottomNavigationBar(0)));
+                    },
+              child: loading == true
+                  ? Center(
+                      child: SizedBox(
+                      width: 20.w,
+                      height: 20.h,
+                      child: const CircularProgressIndicator(
+                        strokeWidth: 2.5,
+                        color: AppColors.primaryColor,
+                      ),
+                    ))
+                  : Text(
+                      tr("loginAsAVisitor"),
+                      style: const TextStyle()
+                          .bodyStyle(fontSize: FontSize.s14.sp)
+                          .customColor(AppColors.black),
+                      textAlign: TextAlign.center,
+                    ),
             ),
           ],
         ),
@@ -215,29 +253,28 @@ class _LoginState extends State<Login> {
 
   _buildForm() {
     return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          CustomTextFieldPhone(
-            noBorder: false,
-            validationMSG:
-            Provider.of<AuthViewModel>(context, listen: true).validationMSG,
-            hint: LocaleKeys.phoneNumber.tr(),
-            iconSVG: Assets.phoneIcon,
-            controller: Provider.of<AuthViewModel>(context, listen: false).phoneController,
-          ),
-          VerticalSpace(AppSize.s8.h),
-          CustomTextFieldPhone(
-            noBorder: false,
-            validationMSG: Provider.of<AuthViewModel>(context, listen: true).validationMSG,
-            hint: LocaleKeys.password.tr(),
-            iconSVG: Assets.svgPasswordIcon,
-            hasIcon: true,
-            controller: Provider.of<AuthViewModel>(context, listen: false).passwordController,
-          ),
-        ],
-      )
-    );
+        key: _formKey,
+        child: Column(
+          children: [
+            CustomTextFieldPhone(
+              noBorder: false,
+              validationMSG: Provider.of<AuthViewModel>(context, listen: true)
+                  .validationMSG,
+              hint: LocaleKeys.phoneNumber.tr(),
+              iconSVG: Assets.phoneIcon,
+              controller: Provider.of<AuthViewModel>(context, listen: false)
+                  .phoneController,
+            ),
+            VerticalSpace(AppSize.s8.h),
+            CustomTextFieldPassword(
+              noBorder: false,
+              hint: LocaleKeys.password.tr(),
+              iconSVG: Assets.svgPasswordIcon,
+              controller: Provider.of<AuthViewModel>(context, listen: false)
+                  .passwordController,
+            ),
+          ],
+        ));
   }
 
   Future<dynamic> showChangeCountrySheet(BuildContext context) async {
@@ -248,10 +285,11 @@ class _LoginState extends State<Login> {
       builder: (context) => const SafeArea(child: CountrySheet()),
     );
   }
+
   Future<void> getLocation(bool isLogin) async {
     try {
       setState(() {
-        isLogin? isLoading =true:loading=true;
+        isLogin ? isLoading = true : loading = true;
       });
 
       final status = await Permission.location.request();
@@ -272,9 +310,9 @@ class _LoginState extends State<Login> {
         print('Address: ${placemarks[0].administrativeArea}');
         print('Address: $address');
         print('Latitude: $latitude, Longitude: $longitude');
-        await  saveUserData.saveDistance(address??'') ;
-        await  saveUserData.saveLongitude(longitude) ;
-        await  saveUserData.saveLatitude(latitude ) ;
+        await saveUserData.saveDistance(address ?? '');
+        await saveUserData.saveLongitude(longitude);
+        await saveUserData.saveLatitude(latitude);
         print('Address: ${saveUserData.getDistance()}');
       } else {
         await [Permission.location].request();
@@ -284,7 +322,7 @@ class _LoginState extends State<Login> {
       print('Error getting location: $e');
     }
     setState(() {
-      isLogin? isLoading =false:loading=false;
+      isLogin ? isLoading = false : loading = false;
     });
   }
 }

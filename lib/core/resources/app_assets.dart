@@ -91,7 +91,7 @@ class Assets {
    static const String paySuccessfully = 'assets/images/gif/pay_successfully.gif';
   static const String cross = '';
   static const String svgEmailIcon = '';
-  static const String svgPhoneIcon = '';
-  static const String svgPasswordIcon = '';
+  static const String svgPhoneIcon = 'assets/images/svg/svgPhoneIcon.svg';
+  static const String svgPasswordIcon = 'assets/images/svg/svgPhoneIcon.svg';
 
 }
