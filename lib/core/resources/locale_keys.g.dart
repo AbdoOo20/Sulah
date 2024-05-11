@@ -12,6 +12,7 @@ abstract class  LocaleKeys {
   static const tittleLogin = 'tittleLogin';
   static const bodyLogin = 'bodyLogin';
   static const login = 'login';
+  static const register = 'register';
   static const otpMassage = 'otpMassage';
   static const writeExperience = 'WriteExperience';
   static const confirm = 'confirm';

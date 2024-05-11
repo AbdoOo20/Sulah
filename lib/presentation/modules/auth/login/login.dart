@@ -20,8 +20,8 @@ import '../../../../data/repository/SaveUserData.dart';
 import '../../../../injection.dart';
 import '../../../component/component.dart';
 import '../../../component/svg_icon.dart';
-import '../../layout/children/setting/web_view/web_view_screen.dart';
 import '../auth_view_model.dart';
+import '../register/register.dart';
 import 'widgets/country_sheet.dart';
 
 class Login extends StatefulWidget {
@@ -50,7 +50,15 @@ class _LoginState extends State<Login> {
         } else {
           getLocation(true);
           Provider.of<AuthViewModel>(context, listen: false)
-              .login(phone: phone, context: context);
+              .login(phone: phone, context: context)
+              .then((value) {
+            Provider.of<AuthViewModel>(context, listen: false)
+                .phoneController
+                .clear();
+            Provider.of<AuthViewModel>(context, listen: false)
+                .passwordController
+                .clear();
+          });
           // Provider.of<AuthViewModel>(context, listen: false).sendOTPFirebase(context, phone);
         }
       }
@@ -76,16 +84,22 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 50.h,
             ),
-            SVGIcon(
-              Assets.logo,
-              height: 90.h,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SVGIcon(
+                  Assets.logo,
+                  height: 50.h,
+                  width: 150.w,
+                ),
+              ],
             ),
-            VerticalSpace(AppSize.s18.h),
+            VerticalSpace(AppSize.s4.h),
             Text(
               tr(LocaleKeys.tittleLogin),
               style: const TextStyle()
                   .titleStyle(fontSize: FontSize.s28.sp)
-                  .customColor(AppColors.gray),
+                  .customColor(AppColors.black),
             ),
             Text(
               tr(LocaleKeys.bodyLogin),
@@ -144,72 +158,72 @@ class _LoginState extends State<Login> {
             VerticalSpace(AppSize.s4.h),
             _buildForm(),
             VerticalSpace(AppSize.s4.h),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  tr("byContinuingYouAgreeTo"),
-                  style: const TextStyle()
-                      .bodyStyle(fontSize: FontSize.s14.sp)
-                      .customColor(AppColors.gray),
-                  textAlign: TextAlign.center,
-                ),
-                InkWell(
-                  onTap: () {
-                    push(WebViewScreen(
-                      title: LocaleKeys.termsAndConditions.tr(),
-                      url: 'https://sulah.sa/${lang}/privacy-policy',
-                    ));
-                  },
-                  child: Text(
-                    LocaleKeys.termsAndConditions.tr(),
-                    style: const TextStyle()
-                        .bodyStyle(fontSize: FontSize.s14.sp)
-                        .customColor(AppColors.primaryColor),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Text(
-                  tr("and"),
-                  style: const TextStyle()
-                      .bodyStyle(fontSize: FontSize.s14.sp)
-                      .customColor(AppColors.gray),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () {
-                    push(WebViewScreen(
-                      title: LocaleKeys.privacyPolicy.tr(),
-                      url: 'https://sulah.sa/${lang}/privacy-policy',
-                    ));
-                  },
-                  child: Text(
-                    LocaleKeys.privacyPolicy.tr(),
-                    style: const TextStyle()
-                        .bodyStyle(fontSize: FontSize.s14.sp)
-                        .customColor(AppColors.primaryColor),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Text(
-                  tr("applicationSpecific"),
-                  style: const TextStyle()
-                      .bodyStyle(fontSize: FontSize.s14.sp)
-                      .customColor(AppColors.gray),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            VerticalSpace(AppSize.s64.h),
+            // Row(
+            //   mainAxisSize: MainAxisSize.min,
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   children: [
+            //     Text(
+            //       tr("byContinuingYouAgreeTo"),
+            //       style: const TextStyle()
+            //           .bodyStyle(fontSize: FontSize.s14.sp)
+            //           .customColor(AppColors.gray),
+            //       textAlign: TextAlign.center,
+            //     ),
+            //     InkWell(
+            //       onTap: () {
+            //         push(WebViewScreen(
+            //           title: LocaleKeys.termsAndConditions.tr(),
+            //           url: 'https://sulah.sa/${lang}/privacy-policy',
+            //         ));
+            //       },
+            //       child: Text(
+            //         LocaleKeys.termsAndConditions.tr(),
+            //         style: const TextStyle()
+            //             .bodyStyle(fontSize: FontSize.s14.sp)
+            //             .customColor(AppColors.primaryColor),
+            //         textAlign: TextAlign.center,
+            //       ),
+            //     ),
+            //     Text(
+            //       tr("and"),
+            //       style: const TextStyle()
+            //           .bodyStyle(fontSize: FontSize.s14.sp)
+            //           .customColor(AppColors.gray),
+            //       textAlign: TextAlign.center,
+            //     ),
+            //   ],
+            // ),
+            // Row(
+            //   mainAxisSize: MainAxisSize.min,
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   children: [
+            //     InkWell(
+            //       onTap: () {
+            //         push(WebViewScreen(
+            //           title: LocaleKeys.privacyPolicy.tr(),
+            //           url: 'https://sulah.sa/${lang}/privacy-policy',
+            //         ));
+            //       },
+            //       child: Text(
+            //         LocaleKeys.privacyPolicy.tr(),
+            //         style: const TextStyle()
+            //             .bodyStyle(fontSize: FontSize.s14.sp)
+            //             .customColor(AppColors.primaryColor),
+            //         textAlign: TextAlign.center,
+            //       ),
+            //     ),
+            //     Text(
+            //       tr("applicationSpecific"),
+            //       style: const TextStyle()
+            //           .bodyStyle(fontSize: FontSize.s14.sp)
+            //           .customColor(AppColors.gray),
+            //       textAlign: TextAlign.center,
+            //     ),
+            //   ],
+            // ),
+            //VerticalSpace(AppSize.s64.h),
             VerticalSpace(AppSize.s16.h),
             CustomButton(
               color: AppColors.primaryColor,
@@ -237,12 +251,34 @@ class _LoginState extends State<Login> {
                         color: AppColors.primaryColor,
                       ),
                     ))
-                  : Text(
-                      tr("loginAsAVisitor"),
-                      style: const TextStyle()
-                          .bodyStyle(fontSize: FontSize.s14.sp)
-                          .customColor(AppColors.black),
-                      textAlign: TextAlign.center,
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            push(const Register());
+                          },
+                          child: Text(
+                            tr("do not have account 1") + ' ',
+                            style: const TextStyle()
+                                .bodyStyle(fontSize: FontSize.s14.sp)
+                                .customColor(AppColors.gray),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            push(const Register());
+                          },
+                          child: Text(
+                            tr("do not have account 2"),
+                            style: const TextStyle()
+                                .bodyStyle(fontSize: FontSize.s14.sp)
+                                .customColor(AppColors.primaryColor),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
                     ),
             ),
           ],

@@ -101,12 +101,13 @@ class CustomTextFieldPhone extends StatelessWidget {
               ? Icon(
                   Icons.visibility_outlined,
                   size: 20.r,
-                  color: AppColors.semeBlack,
+                  color: AppColors.primaryColor,
                 )
               : SvgPicture.asset(
                   iconSVG ?? Assets.svgPhoneIcon,
                   height: 20.r,
                   width: 20.r,
+                  color: AppColors.primaryColor,
                 ),
         ),
       ),

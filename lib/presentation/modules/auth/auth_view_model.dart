@@ -22,8 +22,8 @@ import '../layout/ButtonNavBar.dart';
 import 'confirm_code/verification_code/confirm_code_sheet.dart';
 
 class AuthViewModel with ChangeNotifier {
-   AuthRepo authRepo =getIt();
-   SaveUserData saveUserData=getIt();
+  AuthRepo authRepo = getIt();
+  SaveUserData saveUserData = getIt();
 
   AuthViewModel();
 
@@ -34,15 +34,18 @@ class AuthViewModel with ChangeNotifier {
   String _phoneCode = '+966';
   UserModel? _userModel;
   EmptyDataModel? _emptyDataModel;
-  SendCodeModel ?_sendCodeModel;
+  SendCodeModel? _sendCodeModel;
   bool _isClicked = false;
-   final TextEditingController phoneController = TextEditingController();
-   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   ///getters
   bool get isLoading => _isLoading;
+
   bool get loading => _loading;
+
   SendCodeModel? get sendCodeModel => _sendCodeModel;
+
   String? get validationMSG => _validationMSG;
 
   String get phoneCode => _phoneCode;
@@ -67,6 +70,7 @@ class AuthViewModel with ChangeNotifier {
     notifyListeners();
     return _isClicked = !_isClicked;
   }
+
   String removeLeadingZeroFromString(String input) {
     if (input.isEmpty) {
       return input;
@@ -76,6 +80,7 @@ class AuthViewModel with ChangeNotifier {
     }
     return input;
   }
+
   ///calling APIs Functions
   Future<ApiResponse> login(
       {required String phone, required BuildContext context}) async {
@@ -89,24 +94,22 @@ class AuthViewModel with ChangeNotifier {
     if (responseModel.response != null &&
         responseModel.response?.statusCode == 200) {
       _userModel = UserModel.fromJson(responseModel.response?.data);
-     if (_userModel?.code == 401) {
-      print('sssssssssss2');
-      ToastUtils.showToast(LocaleKeys.phoneNotRegistered.tr());
-      push(Register(phoneCode: phoneCode, phone: phone));
-    }
-     else if (_userModel?.code == 200) {
-        if (_userModel?.data != null) {
-          print('sssssssssss1');
-
-          saveUserData.saveUserData(_userModel!);
-          saveUserData.saveUserToken(_userModel?.data?.token ?? '');
-          phoneController.text='';
-          ToastUtils.showToast(LocaleKeys.loggedInSuccessfully.tr());
-          pushAndRemoveUntil(const CustomBottomNavigationBar(0));
-        }
-      }
-
-    }else {
+      print('sssssssssss1');
+      saveUserData.saveUserData(_userModel!);
+      saveUserData.saveUserToken(_userModel?.data?.token ?? '');
+      phoneController.text = '';
+      ToastUtils.showToast(LocaleKeys.loggedInSuccessfully.tr());
+      pushAndRemoveUntil(const CustomBottomNavigationBar(0));
+      // if (_userModel?.code == 401) {
+      //   print('sssssssssss2');
+      //   ToastUtils.showToast(LocaleKeys.phoneNotRegistered.tr());
+      //   //push(Register(phoneCode: phoneCode, phone: phone));
+      // } else if (_userModel?.code == 200) {
+      //   if (_userModel?.data != null) {
+      //
+      //   }
+      // }
+    } else {
       _isLoading = false;
       ApiChecker.checkApi(context, responseModel);
     }
@@ -133,8 +136,7 @@ class AuthViewModel with ChangeNotifier {
         ToastUtils.showToast(LocaleKeys.successfullyRegistered.tr());
         pushAndRemoveUntil(const CustomBottomNavigationBar(0));
       }
-    }
-    else {
+    } else {
       ApiChecker.checkApi(context, responseModel);
     }
     _isLoading = false;
@@ -147,13 +149,14 @@ class AuthViewModel with ChangeNotifier {
     _isLoading = true;
     notifyListeners();
     ApiResponse responseModel = await authRepo.updateProfile(updateProfileBody);
-    if (responseModel.response != null && responseModel.response?.statusCode == 200) {
+    if (responseModel.response != null &&
+        responseModel.response?.statusCode == 200) {
       _userModel = UserModel.fromJson(responseModel.response?.data);
       if (_userModel != null && _userModel?.code == 200) {
         if (_userModel?.data?.id != null) {
-        await  saveUserData.saveUserData(_userModel!);
-        await  saveUserData.saveUserToken(_userModel?.data?.token??'');
-         await saveUserData.saveUserToken(_userModel?.data?.token ?? '');
+          await saveUserData.saveUserData(_userModel!);
+          await saveUserData.saveUserToken(_userModel?.data?.token ?? '');
+          await saveUserData.saveUserToken(_userModel?.data?.token ?? '');
         }
         ToastUtils.showToast('YourInformationSuccessfullyModified'.tr());
         Navigator.pop(context);
@@ -181,8 +184,9 @@ class AuthViewModel with ChangeNotifier {
       _emptyDataModel = EmptyDataModel.fromJson(responseModel.response?.data);
 
       if (_emptyDataModel?.code == 200) {
-        await saveUserData.clearSharedData().then((value) => pushAndRemoveUntil(const Splash()));
-
+        await saveUserData
+            .clearSharedData()
+            .then((value) => pushAndRemoveUntil(const Splash()));
       } else {
         ToastUtils.showToast(_emptyDataModel?.message ?? "");
       }
@@ -195,7 +199,9 @@ class AuthViewModel with ChangeNotifier {
     return responseModel;
   }
 
-  Future<ApiResponse> deleteAccount(BuildContext context,) async {
+  Future<ApiResponse> deleteAccount(
+    BuildContext context,
+  ) async {
     _isLoading = true;
     notifyListeners();
     ApiResponse responseModel = await authRepo.deleteAccount();
@@ -204,7 +210,9 @@ class AuthViewModel with ChangeNotifier {
       _isLoading = false;
       _emptyDataModel = EmptyDataModel.fromJson(responseModel.response?.data);
       if (_emptyDataModel?.code == 200) {
-        await saveUserData.clearSharedData().then((value) => pushAndRemoveUntil(const Splash()));
+        await saveUserData
+            .clearSharedData()
+            .then((value) => pushAndRemoveUntil(const Splash()));
       } else {
         ToastUtils.showToast(_emptyDataModel?.message ?? "");
       }
@@ -217,29 +225,31 @@ class AuthViewModel with ChangeNotifier {
     return responseModel;
   }
 
-  Future<bool> sendOTPFirebase(BuildContext context,String phone) async {
-
+  Future<bool> sendOTPFirebase(BuildContext context, String phone) async {
     String modifiedPhone = removeLeadingZeroFromString(phone);
-    _loading=true;
+    _loading = true;
     notifyListeners();
     bool successfully = false;
-    ApiResponse responseModel = await authRepo.sendCode(_phoneCode,modifiedPhone);
-    if (responseModel.response != null && responseModel.response?.statusCode == 200) {
+    ApiResponse responseModel =
+        await authRepo.sendCode(_phoneCode, modifiedPhone);
+    if (responseModel.response != null &&
+        responseModel.response?.statusCode == 200) {
       _isLoading = false;
       _sendCodeModel = SendCodeModel.fromJson(responseModel.response?.data);
       if (_sendCodeModel != null && _sendCodeModel?.code == 200) {
-          if (kDebugMode) {
-            print(_sendCodeModel?.data?.code?.toString());
-          }
+        if (kDebugMode) {
+          print(_sendCodeModel?.data?.code?.toString());
+        }
         successfully = true;
-            _loading = false;
-            notifyListeners();
-            showModalBottomSheet(
-              backgroundColor: Colors.transparent,
-              isScrollControlled: true,
-              context: context,
-              builder: (BuildContext context) => ConfirmCodeSheet(phone: modifiedPhone),
-            );
+        _loading = false;
+        notifyListeners();
+        showModalBottomSheet(
+          backgroundColor: Colors.transparent,
+          isScrollControlled: true,
+          context: context,
+          builder: (BuildContext context) =>
+              ConfirmCodeSheet(phone: modifiedPhone),
+        );
       }
     } else {
       ApiChecker.checkApi(context, responseModel);
@@ -249,26 +259,26 @@ class AuthViewModel with ChangeNotifier {
     return successfully;
   }
 
-
-  Future<bool> verifyOTPFirebase(String smsCode,String phone,BuildContext context) async {
+  Future<bool> verifyOTPFirebase(
+      String smsCode, String phone, BuildContext context) async {
     String modifiedPhone = removeLeadingZeroFromString(phone);
     _isLoading = true;
     notifyListeners();
-    try{
-      ApiResponse responseModel = await authRepo.confirmCode(_phoneCode,modifiedPhone,smsCode);
+    try {
+      ApiResponse responseModel =
+          await authRepo.confirmCode(_phoneCode, modifiedPhone, smsCode);
       if (responseModel.response != null &&
           responseModel.response?.statusCode == 200) {
         _emptyDataModel = EmptyDataModel.fromJson(responseModel.response?.data);
 
-        await login(phone:modifiedPhone , context: context);
-
+        await login(phone: modifiedPhone, context: context);
       } else {
         ApiChecker.checkApi(context, responseModel);
       }
       _isLoading = false;
       notifyListeners();
       return true;
-    }catch(e){
+    } catch (e) {
       _isLoading = false;
       ToastUtils.showToast(LocaleKeys.codeIsWrong.tr());
       notifyListeners();

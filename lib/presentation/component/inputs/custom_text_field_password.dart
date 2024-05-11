@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:khedmaty/core/extensions/num_extensions.dart';
 
 import '../../../../core/resources/app_assets.dart';
+import '../../../core/resources/app_colors.dart';
 import 'base_form.dart';
 
 class CustomTextFieldPassword extends StatefulWidget {
@@ -92,8 +93,8 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
     return CustomTextField(
       background: widget.background,
       prefixIcon: widget.iconData ?? Icons.lock_outlined,
-      prefixIconColor: Colors.grey,
-      
+      prefixIconColor: AppColors.primaryColor,
+
       //prefixWidget: SizedBox(height: 20.r,width: 20.r,child: Center(child: SvgPicture.asset(widget.iconSVG??Assets.svgPasswordIcon,height: 20.r,width: 20.r))),
 
       defaultValue: widget.defaultValue,
@@ -124,7 +125,10 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
       controller: widget.controller,
       suffixData: widget.suffixData ??
           IconButton(
-            icon: Icon(_showPassword ? Icons.visibility : Icons.visibility_off,color:widget.isDark?Theme.of(context).cardColor:Theme.of(context).primaryColor),
+            icon: Icon(
+              _showPassword ? Icons.visibility : Icons.visibility_off,
+              color: AppColors.primaryColor,
+            ),
             onPressed: () {
               _togglePasswordVisibility();
             },
