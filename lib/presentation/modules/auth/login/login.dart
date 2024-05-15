@@ -259,7 +259,7 @@ class _LoginState extends State<Login> {
                             push(const Register());
                           },
                           child: Text(
-                            tr("do not have account 1") + ' ',
+                            tr("تسجيل جديد") + ' ',
                             style: const TextStyle()
                                 .bodyStyle(fontSize: FontSize.s14.sp)
                                 .customColor(AppColors.gray),
@@ -271,7 +271,7 @@ class _LoginState extends State<Login> {
                             push(const Register());
                           },
                           child: Text(
-                            tr("do not have account 2"),
+                            tr(" ؟ ليس لديك حساب"),
                             style: const TextStyle()
                                 .bodyStyle(fontSize: FontSize.s14.sp)
                                 .customColor(AppColors.primaryColor),
