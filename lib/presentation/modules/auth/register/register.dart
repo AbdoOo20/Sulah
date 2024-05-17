@@ -58,9 +58,7 @@ class _RegisterState extends State<Register> {
         } else if (lastName.isEmpty) {
           ToastUtils.showToast(
               '${LocaleKeys.lastName.tr()} ${LocaleKeys.required.tr()}');
-        } else if (_image == null) {
-          ToastUtils.showToast(LocaleKeys.logo.tr());
-        } else if (phone.isEmpty) {
+        }  else if (phone.isEmpty) {
           Provider.of<AuthViewModel>(context, listen: false).validationMsg =
               LocaleKeys.phoneMustBeEntered.tr();
         } else if (phone.length < 7) {

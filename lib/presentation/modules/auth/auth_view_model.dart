@@ -86,9 +86,9 @@ class AuthViewModel with ChangeNotifier {
       {required String phone, required BuildContext context}) async {
     _isLoading = true;
     notifyListeners();
-    String modifiedPhone = removeLeadingZeroFromString(phone);
+    // String modifiedPhone = removeLeadingZeroFromString(phone);
     notifyListeners();
-    final LoginBody body = LoginBody(phone: modifiedPhone);
+    final LoginBody body = LoginBody(phone: phone);
     ApiResponse responseModel = await authRepo.loginRepo(body);
 
     if (responseModel.response != null &&
