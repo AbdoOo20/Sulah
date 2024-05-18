@@ -45,6 +45,8 @@ abstract class  LocaleKeys {
   static const compatibleWith = 'CompatibleWith';
   static const company = 'Company';
   static const car = 'car';
+  static const doNotHaveAccount1 = 'doNotHaveAccount1';
+  static const doNotHaveAccount2 = 'doNotHaveAccount2';
 
   ///branches screen
   static const branches = 'branches';
@@ -179,6 +181,8 @@ abstract class  LocaleKeys {
   static const masterCard = 'masterCard';
   static const visa = 'visa';
   static const mada = 'mada';
+  static const madaPay = 'madaPay';
+  static const tabyPay = 'tabyPay';
   static const cash = 'cash';
   static const applePay = 'applePay';
 ///componantes-----------

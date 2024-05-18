@@ -15,8 +15,9 @@ import '../../../../../ButtonNavBar.dart';
 
 
 class PayWebViewScreen extends StatefulWidget {
-  const PayWebViewScreen({Key? key, required this.id}) : super(key: key);
+  const PayWebViewScreen({Key? key, required this.id, required this.link}) : super(key: key);
 final int id;
+final String link;
   @override
   State<PayWebViewScreen> createState() => _PayWebViewScreenState();
 }
@@ -38,7 +39,7 @@ class _PayWebViewScreenState extends State<PayWebViewScreen> {
         },
       ),
       body: WebView(
-        initialUrl: "https://khedmaty-sa.com/api/user/payOrder/${widget.id}",
+        initialUrl: "${widget.link}${widget.id}",
         javascriptMode: JavascriptMode.unrestricted,
         onPageStarted: (String url) {
           setState(() {
@@ -48,16 +49,16 @@ class _PayWebViewScreenState extends State<PayWebViewScreen> {
         onPageFinished: (String url) {
           setState(() {
             _currentUrl = url;
-            if (_currentUrl == successUrl){
-              Timer(const Duration(seconds: 2), () {
-                showDialog<String>(context: context, builder: (BuildContext context) => DialogDone(title: LocaleKeys.requestSentSuccessfully.tr(),));
-              });
-            }else if(_currentUrl == filedUrl){
-              ToastUtils.showToast("paymentFailed".tr());
-              Timer(const Duration(seconds: 2), () {
-                pushAndRemoveUntil(const CustomBottomNavigationBar(0));
-              });
-            }
+            // if (_currentUrl == successUrl){
+            //   Timer(const Duration(seconds: 2), () {
+            //     showDialog<String>(context: context, builder: (BuildContext context) => DialogDone(title: LocaleKeys.requestSentSuccessfully.tr(),));
+            //   });
+            // }else if(_currentUrl == filedUrl){
+            //   ToastUtils.showToast("paymentFailed".tr());
+            //   Timer(const Duration(seconds: 2), () {
+            //     pushAndRemoveUntil(const CustomBottomNavigationBar(0));
+            //   });
+            // }
           });
         },
         onWebViewCreated: (WebViewController webViewController) {

@@ -1,5 +1,5 @@
 {
-  "khedmaty": "Khedmaty",
+  "khedmaty": "Home",
   "products": "Products",
   "productDetails": "Product Details",
   "thePrice": "the Price :",
@@ -182,7 +182,6 @@
   "and": " And ",
   "privacyPolicy": "privacy policy",
   "applicationSpecific": "Application specific",
-  "khedmaty": "khedmaty",
   "myAccount": "My Account",
   "deliveryTo": "Delivery to",
   "nearYou": "Near You",
@@ -219,5 +218,10 @@
   "storeIsCurrentlyUnavailable": "The store is currently unavailable",
   "productIsNotAvailable": "Product is not available",
   "sula": "Siulah",
-  "password": "Password"
+  "password": "Password",
+  "madaPay": "Payment via Mada, Visa, MasterCard",
+  "tabyPay": "Tabby (divide it into 4 or 6 successive interest-free payments)",
+  "doNotHaveAccount1": "Do not have an account ?",
+  "doNotHaveAccount2": "Register now",
+  "register": "Register"
 }

@@ -172,7 +172,6 @@
   "and": " و ",
   "privacyPolicy": "سياسة الخصوصية",
   "applicationSpecific": "الخاصة بـالتطبيق",
-  "khedmaty": "ايداع سيولة",
   "myAccount": "حسابي",
   "deliveryTo": "التوصيل الي",
   "nearYou": "بالقرب منك",
@@ -214,7 +213,6 @@
   "prepared": "تم التجهيز",
   "whatsApp": "واتساب",
   "youMustEnterYourRating": "يجب ادخال تقيمك",
-  "youMustEnterYourRating": "يجب ادخال تقيمك",
   "all": "الكل",
   "storeNotAvailable": "المتجر غير متاح",
   "Write message...": "اكتب رسالتك ....",
@@ -222,5 +220,9 @@
   "productIsNotAvailable": "المنتج غير متوفر",
   "sula": "سيوله",
   "password": "كلمة المرور",
-
+  "madaPay": "الدفع عن طريق مدي, فيزا, ماستركارد",
+  "tabyPay": "تابى (قسمها على 4 أو 6 دفعات متتالية بدون فوائد)",
+  "doNotHaveAccount1": "ليس لديك حساب ؟",
+  "doNotHaveAccount2": "سجل الان",
+  "register": "إنشاء حساب"
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:khedmaty/core/extensions/num_extensions.dart';
 import 'package:provider/provider.dart';
 
-
 import '../../../../../../../../core/res/text_styles.dart';
 import '../../../../../../../../core/resources/resources.dart';
 import '../../../../../../../component/svg_icon.dart';
@@ -20,12 +19,11 @@ class PaymentMethod extends StatelessWidget {
       children: [
         Container(
           height: 64.h,
-         // margin: EdgeInsets.symmetric(vertical: 6.h),
+          // margin: EdgeInsets.symmetric(vertical: 6.h),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.r),
-              ),
-          padding:
-              EdgeInsets.only(top: 10.h, bottom: 10.h),
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -62,13 +60,15 @@ class PaymentMethod extends StatelessWidget {
                           strutStyle: StrutStyle(fontSize: 12.0),
                           text: TextSpan(
                             style: TextStyles()
-                                .getRegularStyle(fontSize: 14.sp)
+                                .getRegularStyle(fontSize: 12.sp)
                                 .customColor(AppColors.black),
                             text: provider == 'cash'
                                 ? LocaleKeys.cash.tr()
-                                : provider == 'online'
-                                    ? LocaleKeys.applePay.tr()
-                                    : '',
+                                : provider == 'mada'
+                                    ? LocaleKeys.madaPay.tr()
+                                    : provider == 'taby'
+                                        ? LocaleKeys.tabyPay.tr()
+                                        : '',
                           ),
                         )),
                       ],
@@ -83,7 +83,10 @@ class PaymentMethod extends StatelessWidget {
             ],
           ),
         ),
-        Container(color: AppColors.grayLight,height: .5.h,)
+        Container(
+          color: AppColors.grayLight,
+          height: .5.h,
+        )
       ],
     );
   }

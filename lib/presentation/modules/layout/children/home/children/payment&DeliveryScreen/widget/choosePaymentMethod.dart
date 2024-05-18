@@ -1,4 +1,6 @@
-import 'dart:math';
+
+
+import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,7 @@ class ChoosePaymentMethod extends StatefulWidget {
 }
 
 class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
-  bool? choose ;
+  int choose = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
                 ),
                 InkWell(
                   onTap: () {
-                   Navigator.pop(context);
+                    Navigator.pop(context);
                   },
                   child: SizedBox(
                     height: 24.h,
@@ -76,7 +78,7 @@ class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
             onTap: () {
               setState(() {
                 provider.paymentTypeSet = 'cash';
-                choose = false;
+                choose = 1;
               });
             },
             child: Container(
@@ -85,21 +87,28 @@ class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
               padding: EdgeInsets.all(12.r),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.h),
-                  color: choose ==null?Colors.transparent:choose==true? AppColors.white : AppColors.second30,
-                  border: Border.all(
-                    width: 1.w,
-                    color:choose ==null?Colors.transparent:choose==true? Colors.transparent : AppColors.primaryColor,
-                  )),
+                color: choose == 1
+                    ? AppColors.second30
+                    : AppColors.white,
+                border: Border.all(
+                  width: 1.w,
+                  color: choose == 1
+                      ? AppColors.primaryColor
+                      : Colors.transparent,
+                ),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    LocaleKeys.cash.tr(),
-                    style: TextStyles()
-                        .getRegularStyle(
-                          fontSize: 14.sp,
-                        )
-                        .customColor(AppColors.black),
+                  Expanded(
+                    child: Text(
+                      LocaleKeys.cash.tr(),
+                      style: TextStyles()
+                          .getRegularStyle(
+                            fontSize: 12.sp,
+                          )
+                          .customColor(AppColors.black),
+                    ),
                   ),
                   SVGIcon(
                     Assets.cash,
@@ -113,8 +122,8 @@ class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
           InkWell(
             onTap: () {
               setState(() {
-                provider.paymentTypeSet = 'online';
-                choose = true;
+                provider.paymentTypeSet = 'mada';
+                choose = 2;
               });
             },
             child: Container(
@@ -123,29 +132,71 @@ class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
               padding: EdgeInsets.all(12.r),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.h),
-                color:choose ==null?Colors.transparent:choose==true? AppColors.second30 : AppColors.white,
+                color: choose == 2
+                        ? AppColors.second30
+                        : AppColors.white,
                 border: Border.all(
                   width: 1.w,
-                  color:choose ==null?Colors.transparent:choose==true? AppColors.primaryColor : Colors.transparent,
-
+                  color: choose == 2
+                          ? AppColors.primaryColor
+                          : Colors.transparent,
                 ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    LocaleKeys.applePay.tr(),
-                    style: TextStyles()
-                        .getRegularStyle(
-                          fontSize: 14.sp,
-                        )
-                        .customColor(AppColors.black),
+                  Expanded(
+                    child: Text(
+                      LocaleKeys.madaPay.tr(),
+                      style: TextStyles()
+                          .getRegularStyle(
+                            fontSize: 12.sp,
+                          )
+                          .customColor(AppColors.black),
+                    ),
                   ),
-                  SVGIcon(
-                    Assets.imagesApplePay,
-                    height: 27.h,
-                    width: 40.w
-                  )
+                  SVGIcon(Assets.imagesMada, height: 27.h, width: 40.w)
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              setState(() {
+                provider.paymentTypeSet = 'taby';
+                choose = 3;
+              });
+            },
+            child: Container(
+              height: 45.h,
+              margin: EdgeInsets.all(4.r),
+              padding: EdgeInsets.all(12.r),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.h),
+                color: choose == 3
+                        ? AppColors.second30
+                        : AppColors.white,
+                border: Border.all(
+                  width: 1.w,
+                  color: choose == 3
+                          ? AppColors.primaryColor
+                          : Colors.transparent,
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      LocaleKeys.tabyPay.tr(),
+                      style: TextStyles()
+                          .getRegularStyle(
+                            fontSize: 12.sp,
+                          )
+                          .customColor(AppColors.black),
+                    ),
+                  ),
+                  SVGIcon(Assets.imagesTaby, height: 27.h, width: 40.w)
                 ],
               ),
             ),

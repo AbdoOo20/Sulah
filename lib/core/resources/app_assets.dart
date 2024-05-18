@@ -85,6 +85,7 @@ class Assets {
   /// not set
   static const String svgExitIcon = 'assets/images/svg/xIcon.svg';
   static const String imagesMada = 'assets/images/svg/mada.svg';
+  static const String imagesTaby = 'assets/images/svg/tabby.svg';
   static const String imagesCash = 'assets/images/svg/cash.svg';
   static const String imagesApplePay = 'assets/images/svg/applePay.svg';
   static const String gifEmptyList = 'assets/images/gif/empty_list.gif';
