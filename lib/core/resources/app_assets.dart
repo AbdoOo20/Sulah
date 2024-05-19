@@ -8,9 +8,9 @@ class Assets {
   static const String logo = 'assets/images/svg/logo.svg';
   static const String flag = 'assets/images/svg/flag.svg';
   static const String flagEgypt = 'assets/images/svg/flagEgypt.svg';
-  static const String intro1 = 'assets/lolitJson/intro1.json';
-  static const String intro2 = 'assets/lolitJson/intro2.json';
-  static const String intro3 = 'assets/lolitJson/intro3.json';
+  static const String intro1 = 'assets/lolitJson/1.json';
+  static const String intro2 = 'assets/lolitJson/2.json';
+  static const String intro3 = 'assets/lolitJson/3.json';
   static const String nextIntro = 'assets/images/svg/nextIntro.svg';
   static const String previousIntro = 'assets/images/svg/previousIntro.svg';
   static const String camera = 'assets/images/svg/camera.svg';
