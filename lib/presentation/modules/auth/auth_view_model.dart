@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -91,6 +92,7 @@ class AuthViewModel with ChangeNotifier {
     final LoginBody body = LoginBody(phone: phone);
     ApiResponse responseModel = await authRepo.loginRepo(body);
 
+    log(responseModel.response!.data.toString());
     if (responseModel.response != null &&
         responseModel.response?.statusCode == 200) {
       _userModel = UserModel.fromJson(responseModel.response?.data);

@@ -7,6 +7,7 @@ import 'package:khedmaty/data/repository/products_Repo.dart';
 import 'package:khedmaty/presentation/modules/auth/auth_view_model.dart';
 import 'package:khedmaty/data/repository/home_Repo.dart';
 import 'package:khedmaty/presentation/modules/layout/children/home/children/products/productsViewModel.dart';
+import 'package:khedmaty/presentation/modules/layout/children/offers/offer%20view%20model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'core/network_info.dart';
@@ -38,6 +39,7 @@ Future<void> init() async {
   getIt.registerLazySingleton(() => ShoppingCaredViewModel(ordersRepo: getIt(), saveUserData: getIt()));
   getIt.registerLazySingleton(() => CartProvider());
   getIt.registerLazySingleton(() => MyOrdersViewModel(myOrdersRepo: getIt()));
+  getIt.registerLazySingleton(() => OfferProvider());
 
   /// Repository
   getIt.registerLazySingleton(() => SaveUserData(sharedPreferences: getIt(), dioClient: getIt()));

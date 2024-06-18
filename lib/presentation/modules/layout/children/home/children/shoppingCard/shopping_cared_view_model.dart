@@ -120,7 +120,7 @@ class ShoppingCaredViewModel with ChangeNotifier {
         } else if (_paymentType == 'taby') {
           push(PayWebViewScreen(
             id: responseModel.response!.data['data']['order']['id'],
-            link: "https://sulah.sa/api/clients/tabby/",
+            link: "https://checkout.tabby.ai/?sessionId=64a9a922-f489-4baa-a021-794a754d13ea&apiKey=pk_test_fa724f4b-c616-464d-82f9-4d0d18bbbabc&product=installments&merchantCode=Seuolasau",
           ));
         } else {
           pushAndRemoveUntil(CustomBottomNavigationBar(0));

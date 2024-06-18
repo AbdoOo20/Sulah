@@ -149,6 +149,7 @@
   "cancellingOrder": "إلغاء الطلب ؟",
   "new": "جديد",
   "accepted": "قبلت",
+  "accept": "قبول",
   "refused": "رفض",
   "on_progress": "قيد التقدم",
   "on_way": "في الطريق",
@@ -224,5 +225,13 @@
   "tabyPay": "تابى (قسمها على 4 أو 6 دفعات متتالية بدون فوائد)",
   "doNotHaveAccount1": "ليس لديك حساب ؟",
   "doNotHaveAccount2": "سجل الان",
-  "register": "إنشاء حساب"
+  "register": "إنشاء حساب",
+  "offers": "عروضي",
+  "theOffers": "العروض",
+  "enterPrice": "أدخل السعر",
+  "add": "إضافة",
+  "enterPriceTitle": "إضافة سعر",
+  "wait": "انتظر",
+  "deleteDone": "تم الحذف",
+  "haveOrder": "لديك عرض على هذا المنتج:"
 }

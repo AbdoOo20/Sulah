@@ -3,6 +3,7 @@ import 'package:khedmaty/presentation/modules/layout/children/home/children/prod
 import 'package:khedmaty/presentation/modules/layout/children/home/children/shoppingCard/shopping_cared_view_model.dart';
 import 'package:khedmaty/presentation/modules/layout/children/home/homeViewModel.dart';
 import 'package:khedmaty/presentation/modules/layout/children/my_orders/my_orders_view_model.dart';
+import 'package:khedmaty/presentation/modules/layout/children/offers/offer%20view%20model.dart';
 import 'package:khedmaty/presentation/modules/layout/children/setting/settingViewModel.dart';
 import 'package:provider/provider.dart';
 import 'data/datasource/locale/database_provider.dart';
@@ -26,6 +27,7 @@ class GenerateMultiProvider extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => getIt<CartProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<ShoppingCaredViewModel>()),
         ChangeNotifierProvider(create: (_) => getIt<MyOrdersViewModel>()),
+        ChangeNotifierProvider(create: (_) => getIt<OfferProvider>()),
       ],
       child: child,
     );

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:khedmaty/core/routing/route.dart';
@@ -11,6 +13,13 @@ import '../../../../../data/model/response/myOrdersModel.dart';
 import '../../../../../data/model/response/oneOrderModel.dart';
 import '../../../../../data/repository/myOrderRepo.dart';
 
+class AllOrder {
+  String? name;
+  String? image;
+  int? id;
+
+  AllOrder(this.id, this.name, this.image);
+}
 
 class MyOrdersViewModel with ChangeNotifier {
   final MyOrdersRepo myOrdersRepo;
@@ -21,25 +30,30 @@ class MyOrdersViewModel with ChangeNotifier {
   bool _rateLoading = false;
 
   bool get isLoading => _isLoading;
+
   bool get rateLoading => _rateLoading;
-num rate =0;
+  num rate = 0;
 
   ///calling APIs Functions
   MyOrdersModel? _myOrdersModel;
+  List<AllOrder>? _allOrdersData;
   OneOrderModel? _oneOrderModel;
   EmptyDataModel? _emptyDataModel;
 
-
   MyOrdersModel? get myOrdersModel => _myOrdersModel;
-  OneOrderModel? get oneOrderModel => _oneOrderModel;
-  EmptyDataModel? get emptyDataModel => _emptyDataModel;
 
+  List<AllOrder>? get allOrdersData => _allOrdersData;
+
+  OneOrderModel? get oneOrderModel => _oneOrderModel;
+
+  EmptyDataModel? get emptyDataModel => _emptyDataModel;
 
   MyOneOrderModel? _myOrderData;
   MyOneOrderModel? _oneOrder;
-  MyOneOrderModel? get myOrderData => _myOrderData;
-  MyOneOrderModel? get oneOrder => _oneOrder;
 
+  MyOneOrderModel? get myOrderData => _myOrderData;
+
+  MyOneOrderModel? get oneOrder => _oneOrder;
 
   Future<ApiResponse> getMyOrdersApi(BuildContext context, String type) async {
     _isLoading = true;
@@ -57,14 +71,15 @@ num rate =0;
     notifyListeners();
     return responseModel;
   }
-  Future<ApiResponse> getOneOrderApi(BuildContext context, String orderId) async {
+
+  Future<ApiResponse> getOneOrderApi(
+      BuildContext context, String orderId) async {
     _oneOrderModel = null;
     _isLoading = true;
     // notifyListeners();
     ApiResponse responseModel = await myOrdersRepo.oneOrderRepo(orderId);
     if (responseModel.response != null &&
         responseModel.response?.statusCode == 200) {
-
       _isLoading = false;
       _oneOrderModel = OneOrderModel.fromJson(responseModel.response?.data);
       notifyListeners();
@@ -75,7 +90,9 @@ num rate =0;
     notifyListeners();
     return responseModel;
   }
-  Future<ApiResponse> cancelOneOrderApi(BuildContext context, String orderId) async {
+
+  Future<ApiResponse> cancelOneOrderApi(
+      BuildContext context, String orderId) async {
     _isLoading = true;
     notifyListeners();
     ApiResponse responseModel = await myOrdersRepo.cancelOrderRepo(orderId);
@@ -83,13 +100,12 @@ num rate =0;
         responseModel.response?.statusCode == 200) {
       _isLoading = false;
       _emptyDataModel = EmptyDataModel.fromJson(responseModel.response?.data);
-      if (_emptyDataModel?.code== 200) {
-        getMyOrdersApi(context,'current');
-      }
-      else if (_emptyDataModel?.code== 430) {
+      if (_emptyDataModel?.code == 200) {
+        getMyOrdersApi(context, 'current');
+      } else if (_emptyDataModel?.code == 430) {
         pushAndRemoveUntil(Login());
-      }else{
-        ToastUtils.showToast(_emptyDataModel?.message??'');
+      } else {
+        ToastUtils.showToast(_emptyDataModel?.message ?? '');
       }
 
       notifyListeners();
@@ -100,19 +116,21 @@ num rate =0;
     notifyListeners();
     return responseModel;
   }
-  Future<ApiResponse> rateApi(BuildContext context, String orderId,String text,String storeId) async {
+
+  Future<ApiResponse> rateApi(
+      BuildContext context, String orderId, String text, String storeId) async {
     _rateLoading = true;
     notifyListeners();
-    ApiResponse responseModel = await myOrdersRepo.rateRepo(orderId,rate ,text,storeId);
-    if (responseModel.response != null && responseModel.response?.statusCode == 200) {
+    ApiResponse responseModel =
+        await myOrdersRepo.rateRepo(orderId, rate, text, storeId);
+    if (responseModel.response != null &&
+        responseModel.response?.statusCode == 200) {
       _emptyDataModel = EmptyDataModel.fromJson(responseModel.response?.data);
-      if(_emptyDataModel?.code==200){
-        getOneOrderApi( context,  orderId);
+      if (_emptyDataModel?.code == 200) {
+        getOneOrderApi(context, orderId);
         Navigator.pop(context);
-
-      }
-      else{
-        ToastUtils.showToast(_emptyDataModel?.message??'');
+      } else {
+        ToastUtils.showToast(_emptyDataModel?.message ?? '');
       }
     } else {
       ApiChecker.checkApi(context, responseModel);

@@ -32,6 +32,10 @@ class AppURL {
   static const String kRatesStoreURL = "clients/rates-stores";
   ///orders
   static const String kMyOrder = "clients/orders"; //اللينك ده عليه شغل ٣ لينكات
+  static const String kOffer = "clients/offers-products";
+  static const String kAddOffer = "clients/offer/add";
+  static const String kDeleteOffer = "clients/offers/";
+  static const String kAcceptRejectOffer = "stores/update-products-offers";
   ///setting
   static const String kSettingURI = "setting";
   ///home

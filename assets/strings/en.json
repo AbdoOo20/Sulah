@@ -157,6 +157,7 @@
   "selectDate": "select date",
   "new": "New",
   "accepted": "Accepted",
+  "accept": "Accept",
   "refused": "Refused",
   "on_progress": "On Progress",
   "on_way": "On Way",
@@ -223,5 +224,13 @@
   "tabyPay": "Tabby (divide it into 4 or 6 successive interest-free payments)",
   "doNotHaveAccount1": "Do not have an account ?",
   "doNotHaveAccount2": "Register now",
-  "register": "Register"
+  "register": "Register",
+  "offers": "My Offers",
+  "theOffers": "Offers",
+  "enterPrice": "Enter Price",
+  "enterPriceTitle": "Add Price",
+  "add": "Add",
+  "wait": "Wait",
+  "deleteDone": "Deleted",
+  "haveOrder": "You have an offer on this product: "
 }
