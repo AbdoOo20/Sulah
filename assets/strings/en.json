@@ -232,5 +232,9 @@
   "add": "Add",
   "wait": "Wait",
   "deleteDone": "Deleted",
-  "haveOrder": "You have an offer on this product: "
+  "haveOrder": "You have an offer on this product: ",
+  "acceptOrder": "An offer has been accepted for this product",
+  "paymentWait": "Wait Payment",
+  "paymentAccept": "Payment Confirmed",
+  "refuseOrder": "Offer Refused"
 }

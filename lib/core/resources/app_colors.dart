@@ -18,6 +18,7 @@ class AppColors {
   static  const Color main30 = Color(0xffFEE0D9);
   static const Color main10 = Color(0xffF6F6F6);
    static const Color green = Color(0xff00A64F);
+   static const Color amber = Colors.amber;
   static const Color semeBlack = Color(0xff2F2D2E);
   static const Color second30=  Color(0x4dB9E5B3);
 

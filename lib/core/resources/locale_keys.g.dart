@@ -9,6 +9,7 @@ abstract class LocaleKeys {
   static const wait = 'wait';
   static const addedSuccessfully = 'addedSuccessfully';
   static const deleteDone = 'deleteDone';
+  static const refuseOrder = 'refuseOrder';
 
   /// Auth Model
   static const codeIsWrong = 'codeIsWrong';
@@ -97,6 +98,9 @@ abstract class LocaleKeys {
   static const String accept = 'accept';
   static const String refused = 'refused';
   static const String haveOrder = 'haveOrder';
+  static const String acceptOrder = 'acceptOrder';
+  static const String paymentWait = 'paymentWait';
+  static const String paymentAccept = 'paymentAccept';
   static const String enterPriceTitle = 'enterPriceTitle';
   static const String enterPrice = 'enterPrice';
   static const String add = 'add';

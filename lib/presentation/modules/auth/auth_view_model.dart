@@ -8,6 +8,7 @@ import 'package:khedmaty/core/routing/route.dart';
 import 'package:khedmaty/injection.dart';
 import 'package:khedmaty/presentation/modules/auth/register/register.dart';
 import 'package:khedmaty/presentation/modules/splash/splash.dart';
+import 'package:provider/provider.dart';
 import '../../../../core/api_checker.dart';
 import '../../../../data/model/body/LoginBody.dart';
 import '../../../../data/model/response/base/api_response.dart';
@@ -90,9 +91,9 @@ class AuthViewModel with ChangeNotifier {
     // String modifiedPhone = removeLeadingZeroFromString(phone);
     notifyListeners();
     final LoginBody body = LoginBody(phone: phone);
+    
     ApiResponse responseModel = await authRepo.loginRepo(body);
 
-    log(responseModel.response!.data.toString());
     if (responseModel.response != null &&
         responseModel.response?.statusCode == 200) {
       _userModel = UserModel.fromJson(responseModel.response?.data);

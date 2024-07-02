@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -61,12 +60,14 @@ class OfferOrder {
   late int price;
   late int storeID;
   late String status;
+  late String payment;
 
   OfferOrder({
     required this.id,
     required this.price,
     required this.storeID,
     required this.status,
+    required this.payment,
   });
 
   factory OfferOrder.fromJson(Map<String, dynamic> json) => OfferOrder(
@@ -74,6 +75,7 @@ class OfferOrder {
         price: json["price"],
         storeID: json["store_id"],
         status: json["status"],
+        payment: json["payment_status"],
       );
 }
 
@@ -111,6 +113,7 @@ class OfferProvider with ChangeNotifier {
     int productId,
     int amount,
   ) async {
+    log(price.toString());
     dioClient = getIt();
     Map<String, dynamic> data = {
       'price': price,

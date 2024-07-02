@@ -33,13 +33,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   Future<void> _loadData(BuildContext context) async {
-    await Provider.of<HomeViewModel>(context, listen: false).getSliderImages(context,);
-    await Provider.of<HomeViewModel>(context, listen: false).getDepartments(context,);
-    await Provider.of<HomeViewModel>(context, listen: false).getNearStores(context, widget.search ?? '');
-    await Provider.of<HomeViewModel>(context, listen: false).getBestStores(context);
-    await Provider.of<HomeViewModel>(context, listen: false).getBestSeller(context);
+    await Provider.of<HomeViewModel>(context, listen: false).getSliderImages(
+      context,
+    );
+    await Provider.of<HomeViewModel>(context, listen: false).getDepartments(
+      context,
+    );
+    await Provider.of<HomeViewModel>(context, listen: false)
+        .getNearStores(context, widget.search ?? '');
+    await Provider.of<HomeViewModel>(context, listen: false)
+        .getBestStores(context);
+    await Provider.of<HomeViewModel>(context, listen: false)
+        .getBestSeller(context);
     // // await Provider.of<HomeViewModel>(context, listen: false).getNotificationCount(context,);
   }
 
@@ -54,37 +60,37 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: AppColors.white,
       floatingActionButton: const CustomFloatingActionButton(),
-      body:Consumer<HomeViewModel>(
-          builder: (context, data, child) => RefreshIndicator(
+      body: Consumer<HomeViewModel>(
+        builder: (context, data, child) => RefreshIndicator(
           onRefresh: () async => await _loadData(context),
-    child: ScreenStateLayout(
-    isLoading:
-    data.sliderModel == null||data.departmentsModel==null||data.nearestStoresModel==null||data.bestStoresModel == null||data.bestSellerModel==null ,
-    builder: (context) =>
-    Column(
-        children: [
-          const CustomAppBarHome(),
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.only(bottom: 8.h),
-              children:  const [
-                SizedBox(height: 8),
-                CustomSlider(),
-                CustomSearch(),
-                CustomCategoryList(),
-                // CustomNearToYouList(),
-                // CustomProminent(),
-                CustomBestSell(),
+          child: ScreenStateLayout(
+            isLoading: data.sliderModel == null ||
+                data.departmentsModel == null ||
+                data.nearestStoresModel == null ||
+                data.bestStoresModel == null ||
+                data.bestSellerModel == null,
+            builder: (context) => Column(
+              children: [
+                const CustomAppBarHome(),
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.only(bottom: 8.h),
+                    children: const [
+                      SizedBox(height: 8),
+                      CustomSlider(),
+                      CustomSearch(),
+                      CustomCategoryList(),
+                      // CustomNearToYouList(),
+                      // CustomProminent(),
+                      CustomBestSell(),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-        ],
+        ),
       ),
-    ))));
+    );
   }
 }
-
-
-
-
-

@@ -64,7 +64,8 @@ class _OfferItemState extends State<OfferItem> {
                                 child: CachedNetworkImage(
                                   fit: BoxFit.fill,
                                   imageUrl: widget.product.image ?? '',
-                                  placeholder: (context, url) => new Center(
+                                  placeholder: (context, url) =>
+                                  new Center(
                                     child: SizedBox(
                                       width: 20,
                                       height: 20,
@@ -73,11 +74,12 @@ class _OfferItemState extends State<OfferItem> {
                                       ),
                                     ),
                                   ),
-                                  errorWidget: (context, url, error) => SVGIcon(
-                                    Assets.errorProducts,
-                                    height: 70.h,
-                                    width: 70.w,
-                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      SVGIcon(
+                                        Assets.errorProducts,
+                                        height: 70.h,
+                                        width: 70.w,
+                                      ),
                                 ),
                               ),
                             ),
@@ -89,13 +91,16 @@ class _OfferItemState extends State<OfferItem> {
                               children: [
                                 SizedBox(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                                  MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 0.4,
                                   child: Text(
                                     widget.product.title,
                                     style: TextStyles()
                                         .getTitleStyle(
-                                          fontSize: 14.sp,
-                                        )
+                                      fontSize: 14.sp,
+                                    )
                                         .customColor(AppColors.black),
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 3,
@@ -116,19 +121,19 @@ class _OfferItemState extends State<OfferItem> {
                                         children: <TextSpan>[
                                           TextSpan(
                                             text:
-                                                widget.product.price.toString(),
+                                            widget.product.price.toString(),
                                             style: TextStyles()
                                                 .getTitleStyle(
-                                                  fontSize: 18.sp,
-                                                )
+                                              fontSize: 18.sp,
+                                            )
                                                 .customColor(AppColors.black),
                                           ),
                                           TextSpan(
                                             text: LocaleKeys.sar.tr(),
                                             style: TextStyles()
                                                 .getRegularStyle(
-                                                  fontSize: 12.sp,
-                                                )
+                                              fontSize: 12.sp,
+                                            )
                                                 .customColor(AppColors.black),
                                           ),
                                         ],
@@ -136,100 +141,153 @@ class _OfferItemState extends State<OfferItem> {
                                     ),
                                   ],
                                 ),
-                                if (widget.isOffer &&
-                                    !widget.product.offers.any((element) =>
-                                        element.status == 'accepted'))
+                                if (widget.isOffer)
                                   for (int i = 0;
-                                      i < widget.product.offers.length;
-                                      i++)
+                                  i < widget.product.offers.length;
+                                  i++)
                                     Column(
                                       children: [
                                         Text.rich(
                                           TextSpan(
                                             children: <TextSpan>[
                                               TextSpan(
-                                                text: LocaleKeys.haveOrder.tr(),
+                                                text: widget.product.offers[i]
+                                                    .status ==
+                                                    'accepted'
+                                                    ? LocaleKeys.acceptOrder
+                                                    .tr()
+                                                    : widget.product.offers[i]
+                                                    .status ==
+                                                    'waiting' ? LocaleKeys
+                                                    .haveOrder.tr() : LocaleKeys.refuseOrder.tr(),
                                                 style: TextStyles()
                                                     .getTitleStyle(
-                                                      fontSize: 8.sp,
-                                                    )
+                                                  fontSize: 8.sp,
+                                                )
                                                     .customColor(
-                                                        AppColors.green),
+                                                  widget.product.offers[i]
+                                                      .status ==
+                                                      'accepted'
+                                                      ?
+                                                  AppColors.green : widget
+                                                      .product.offers[i]
+                                                      .status ==
+                                                      'waiting'
+                                                      ? AppColors.primaryColor
+                                                      : AppColors.errorColor,
+                                                ),
                                               ),
                                               TextSpan(
                                                 text:
-                                                    " ${widget.product.offers[i].price} ${LocaleKeys.sar.tr()}",
+                                                " ${widget.product.offers[i]
+                                                    .price} ${LocaleKeys.sar
+                                                    .tr()}",
                                                 style: TextStyles()
                                                     .getRegularStyle(
-                                                      fontSize: 8.sp,
-                                                    )
+                                                  fontSize: 8.sp,
+                                                )
                                                     .customColor(
-                                                        AppColors.green),
+                                                  widget.product.offers[i]
+                                                      .status ==
+                                                      'accepted'
+                                                      ?
+                                                  AppColors.green : widget
+                                                      .product.offers[i]
+                                                      .status ==
+                                                      'waiting'
+                                                      ? AppColors.primaryColor
+                                                      : AppColors.errorColor,
+                                                ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        Row(
-                                          children: [
-                                            InkWell(
-                                              onTap: () {
-                                                offerProvider
-                                                    .acceptOrRejectOffer(
-                                                        'accepted',
-                                                        widget.product.offers[i]
-                                                            .id,
-                                                        context);
-                                              },
-                                              child: Container(
-                                                padding: EdgeInsets.all(5.r),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          16.r),
-                                                  color: AppColors.primaryColor,
-                                                ),
-                                                child: Text(
-                                                  LocaleKeys.accept.tr(),
-                                                  style: TextStyles()
-                                                      .getRegularStyle(
-                                                        fontSize: 11.sp,
-                                                      )
-                                                      .customColor(
-                                                          AppColors.white),
+                                        if (widget.product.offers[i].status ==
+                                            'accepted')
+                                          Text(
+                                            widget.product.offers[i].payment ==
+                                                'waiting'
+                                                ? LocaleKeys.paymentWait.tr()
+                                                : LocaleKeys.paymentAccept.tr(),
+                                            style: TextStyles()
+                                                .getTitleStyle(
+                                              fontSize: 12.sp,
+                                            )
+                                                .customColor(
+                                              widget.product.offers[i]
+                                                  .payment ==
+                                                  'waiting'
+                                                  ? AppColors.amber
+                                                  : AppColors.green,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        if (!widget.product.offers.any((element){
+                                          return element.status == 'accepted';
+                                        }) && widget.product.offers[i].status == 'waiting')
+                                          Row(
+                                            children: [
+                                              InkWell(
+                                                onTap: () {
+                                                  offerProvider
+                                                      .acceptOrRejectOffer(
+                                                      'accepted',
+                                                      widget.product
+                                                          .offers[i].id,
+                                                      context);
+                                                },
+                                                child: Container(
+                                                  padding: EdgeInsets.all(5.r),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                    BorderRadius.circular(
+                                                        16.r),
+                                                    color:
+                                                    AppColors.green,
+                                                  ),
+                                                  child: Text(
+                                                    LocaleKeys.accept.tr(),
+                                                    style: TextStyles()
+                                                        .getRegularStyle(
+                                                      fontSize: 11.sp,
+                                                    )
+                                                        .customColor(
+                                                        AppColors.white),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            SizedBox(width: 20.w),
-                                            InkWell(
-                                              onTap: () {
-                                                offerProvider
-                                                    .acceptOrRejectOffer(
-                                                        'rejected',
-                                                        widget.product.offers[i]
-                                                            .id,
-                                                        context);
-                                              },
-                                              child: Container(
-                                                padding: EdgeInsets.all(5.r),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          16.r),
-                                                  color: AppColors.primaryColor,
-                                                ),
-                                                child: Text(
-                                                  LocaleKeys.refused.tr(),
-                                                  style: TextStyles()
-                                                      .getRegularStyle(
-                                                        fontSize: 11.sp,
-                                                      )
-                                                      .customColor(
-                                                          AppColors.white),
+                                              SizedBox(width: 20.w),
+                                              InkWell(
+                                                onTap: () {
+                                                  offerProvider
+                                                      .acceptOrRejectOffer(
+                                                      'rejected',
+                                                      widget.product
+                                                          .offers[i].id,
+                                                      context);
+                                                },
+                                                child: Container(
+                                                  padding: EdgeInsets.all(5.r),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                    BorderRadius.circular(
+                                                        16.r),
+                                                    color:
+                                                    AppColors.errorColor,
+                                                  ),
+                                                  child: Text(
+                                                    LocaleKeys.refused.tr(),
+                                                    style: TextStyles()
+                                                        .getRegularStyle(
+                                                      fontSize: 11.sp,
+                                                    )
+                                                        .customColor(
+                                                        AppColors.white),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
+                                            ],
+                                          ),
                                       ],
                                     ),
                               ],

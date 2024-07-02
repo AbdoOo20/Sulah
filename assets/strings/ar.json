@@ -233,5 +233,9 @@
   "enterPriceTitle": "إضافة سعر",
   "wait": "انتظر",
   "deleteDone": "تم الحذف",
-  "haveOrder": "لديك عرض على هذا المنتج:"
+  "haveOrder": "لديك عرض على هذا المنتج:",
+  "acceptOrder": "تم قبول عرض على هذا المنتج بقيمة",
+  "paymentWait": "انتظر الدفع",
+  "paymentAccept": "تم الدفع",
+  "refuseOrder": "تم رفض عرض"
 }

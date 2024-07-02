@@ -44,9 +44,9 @@ class CustomTextFieldNormal extends StatelessWidget {
 
   final TextEditingController? controller;
   final TextInputAction? textInputAction;
-  final TextInputType? textInputType;
+  TextInputType textInputType;
 
-   const CustomTextFieldNormal({
+  CustomTextFieldNormal({
     Key? key,
     this.suffixText,
     this.hint,
@@ -77,7 +77,7 @@ class CustomTextFieldNormal extends StatelessWidget {
     this.onSubmit,
     this.controller,
     this.textInputAction,
-    this.textInputType,
+    this.textInputType = TextInputType.text,
   }) : super(key: key);
 
   @override
@@ -88,8 +88,15 @@ class CustomTextFieldNormal extends StatelessWidget {
       prefixIcon: iconData,
       isHorizontal: isHorizontal,
       defaultValue: defaultValue,
-      prefixWidget:iconSVG==null?null: SizedBox(height: 24.h,width: 24.w,child: Center(child: SvgPicture.asset(iconSVG!,height: 24.h,width: 24.w))),
-      type: textInputType!,
+      prefixWidget: iconSVG == null
+          ? null
+          : SizedBox(
+              height: 24.h,
+              width: 24.w,
+              child: Center(
+                  child:
+                      SvgPicture.asset(iconSVG!, height: 24.h, width: 24.w))),
+      type: textInputType,
       hint: hint,
       onTap: onTap,
       maxLength: maxLength,
@@ -105,7 +112,7 @@ class CustomTextFieldNormal extends StatelessWidget {
       radius: radius,
       onChange: onChange,
       suffixIconData: suffixIconData,
-      validateFunc: validateFunc ,
+      validateFunc: validateFunc,
       suffixText: suffixText,
       formatter: formatter,
       controller: controller ?? TextEditingController(),

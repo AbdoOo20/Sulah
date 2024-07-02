@@ -112,19 +112,19 @@ class _MyOffersState extends State<MyOffers> {
                         child: ScreenStateLayout(
                           isLoading: data.isLoading,
                           isEmpty: data.products.isEmpty,
-                          builder: (context) => ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: data.products.length,
-                            itemBuilder: (context, index) {
-                              return RefreshIndicator(
-                                onRefresh: () async =>
-                                    await data.getMyOrders(context),
-                                child: Padding(
+                          builder: (context) => RefreshIndicator(
+                            child: ListView.builder(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              itemCount: data.products.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
                                   padding: EdgeInsets.only(top: 24.h),
                                   child: OfferItem(data.products[index], false),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
+                            onRefresh: () async =>
+                                await data.getMyOrders(context),
                           ),
                         ),
                       ),
@@ -133,19 +133,19 @@ class _MyOffersState extends State<MyOffers> {
                         child: ScreenStateLayout(
                           isLoading: data.isLoading,
                           isEmpty: data.offers.isEmpty,
-                          builder: (context) => ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: data.offers.length,
-                            itemBuilder: (context, index) {
-                              return RefreshIndicator(
-                                onRefresh: () async =>
-                                    await data.getMyOrders(context),
-                                child: Padding(
+                          builder: (context) => RefreshIndicator(
+                            child: ListView.builder(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              itemCount: data.offers.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
                                   padding: EdgeInsets.only(top: 24.h),
                                   child: OfferItem(data.offers[index], true),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
+                            onRefresh: () async =>
+                                await data.getMyOrders(context),
                           ),
                         ),
                       )
