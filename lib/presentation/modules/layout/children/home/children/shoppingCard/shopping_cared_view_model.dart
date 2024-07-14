@@ -105,6 +105,7 @@ class ShoppingCaredViewModel with ChangeNotifier {
       _costModel =
           CalculateOrderCostModel.fromJson(responseModel.response?.data);
       if (_costModel?.code == 200) {
+        log(responseModel.response!.data.toString());
         noteController?.text = '';
         Provider.of<CartProvider>(context, listen: false).cartItems.clear();
         notifyListeners();
@@ -112,15 +113,15 @@ class ShoppingCaredViewModel with ChangeNotifier {
             "cart",
             cartItemsToJson(
                 Provider.of<CartProvider>(context, listen: false).cartItems));
-        if (_paymentType == 'mada') {
+        if (_paymentType == 'moyasar') {
           push(PayWebViewScreen(
             id: responseModel.response!.data['data']['order']['id'],
             link: "https://sulah.sa/moyasar/",
           ));
-        } else if (_paymentType == 'taby') {
+        } else if (_paymentType == 'tabby') {
           push(PayWebViewScreen(
             id: responseModel.response!.data['data']['order']['id'],
-            link: "https://checkout.tabby.ai/?sessionId=64a9a922-f489-4baa-a021-794a754d13ea&apiKey=pk_test_fa724f4b-c616-464d-82f9-4d0d18bbbabc&product=installments&merchantCode=Seuolasau",
+            link: responseModel.response!.data['data']['redirectUrl'],
           ));
         } else {
           pushAndRemoveUntil(CustomBottomNavigationBar(0));

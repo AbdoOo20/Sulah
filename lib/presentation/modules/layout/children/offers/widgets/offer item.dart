@@ -204,23 +204,58 @@ class _OfferItemState extends State<OfferItem> {
                                         ),
                                         if (widget.product.offers[i].status ==
                                             'accepted')
-                                          Text(
-                                            widget.product.offers[i].payment ==
-                                                'waiting'
-                                                ? LocaleKeys.paymentWait.tr()
-                                                : LocaleKeys.paymentAccept.tr(),
-                                            style: TextStyles()
-                                                .getTitleStyle(
-                                              fontSize: 12.sp,
-                                            )
-                                                .customColor(
-                                              widget.product.offers[i]
-                                                  .payment ==
-                                                  'waiting'
-                                                  ? AppColors.amber
-                                                  : AppColors.green,
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                widget.product.offers[i].name,
+                                                style: TextStyles()
+                                                    .getTitleStyle(
+                                                  fontSize: 9.sp,
+                                                )
+                                                    .customColor(
+                                                  widget.product.offers[i]
+                                                      .payment ==
+                                                      'waiting'
+                                                      ? AppColors.amber
+                                                      : AppColors.green,
+                                                ),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              Text(
+                                                widget.product.offers[i].phone,
+                                                style: TextStyles()
+                                                    .getTitleStyle(
+                                                  fontSize: 9.sp,
+                                                )
+                                                    .customColor(
+                                                  widget.product.offers[i]
+                                                      .payment ==
+                                                      'waiting'
+                                                      ? AppColors.amber
+                                                      : AppColors.green,
+                                                ),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              Text(
+                                                widget.product.offers[i].payment ==
+                                                    'waiting'
+                                                    ? LocaleKeys.paymentWait.tr()
+                                                    : LocaleKeys.paymentAccept.tr(),
+                                                style: TextStyles()
+                                                    .getTitleStyle(
+                                                  fontSize: 12.sp,
+                                                )
+                                                    .customColor(
+                                                  widget.product.offers[i]
+                                                      .payment ==
+                                                      'waiting'
+                                                      ? AppColors.amber
+                                                      : AppColors.green,
+                                                ),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
                                           ),
                                         if (!widget.product.offers.any((element){
                                           return element.status == 'accepted';

@@ -32,9 +32,9 @@ class _BillScreenState extends State<BillScreen> {
         builder: (context, shopping, cart, child) {
       String typePay = shopping.paymentType == 'cash'
           ? LocaleKeys.cash.tr()
-          : shopping.paymentType == 'mada'
+          : shopping.paymentType == 'moyasar'
               ? LocaleKeys.madaPay.tr()
-              : shopping.paymentType == 'taby'
+              : shopping.paymentType == 'tabby'
                   ? LocaleKeys.tabyPay.tr()
                   : '';
       return CustomScaffold(

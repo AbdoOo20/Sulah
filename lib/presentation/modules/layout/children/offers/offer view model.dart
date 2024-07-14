@@ -61,6 +61,8 @@ class OfferOrder {
   late int storeID;
   late String status;
   late String payment;
+  late String name;
+  late String phone;
 
   OfferOrder({
     required this.id,
@@ -68,14 +70,19 @@ class OfferOrder {
     required this.storeID,
     required this.status,
     required this.payment,
+    required this.name,
+    required this.phone,
   });
 
-  factory OfferOrder.fromJson(Map<String, dynamic> json) => OfferOrder(
+  factory OfferOrder.fromJson(Map<String, dynamic> json) =>
+      OfferOrder(
         id: json["id"],
         price: json["price"],
         storeID: json["store_id"],
         status: json["status"],
         payment: json["payment_status"],
+        name: json["status"] == 'accepted' ? json["store"]["name"] : '',
+        phone: json["status"] == 'accepted' ? "${json["store"]["phone"]} ${json["store"]["country_code"]}" : "",
       );
 }
 
@@ -97,6 +104,8 @@ class OfferProvider with ChangeNotifier {
         products.add(ProductOffer.fromJson(e, false));
       });
       response.data['data']['myoffers'].forEach((e) {
+        log(e.toString());
+        log('-----------------------------------------------------');
         offers.add(ProductOffer.fromJson(e, true));
       });
     } else {
@@ -107,12 +116,10 @@ class OfferProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addOffer(
-    int price,
-    int orderID,
-    int productId,
-    int amount,
-  ) async {
+  Future<void> addOffer(int price,
+      int orderID,
+      int productId,
+      int amount,) async {
     log(price.toString());
     dioClient = getIt();
     Map<String, dynamic> data = {
@@ -140,7 +147,7 @@ class OfferProvider with ChangeNotifier {
     ToastUtils.showToast(LocaleKeys.wait.tr());
     dioClient = getIt();
     Response response =
-        await dioClient.delete("${AppURL.kDeleteOffer}$offerID");
+    await dioClient.delete("${AppURL.kDeleteOffer}$offerID");
     if (response.statusCode == 200) {
       ToastUtils.showToast(LocaleKeys.deleteDone.tr());
       await getMyOrders(context);
@@ -150,8 +157,8 @@ class OfferProvider with ChangeNotifier {
     }
   }
 
-  Future<void> acceptOrRejectOffer(
-      String status, int id, BuildContext context) async {
+  Future<void> acceptOrRejectOffer(String status, int id,
+      BuildContext context) async {
     dioClient = getIt();
     ToastUtils.showToast(LocaleKeys.wait.tr());
     isLoading = true;

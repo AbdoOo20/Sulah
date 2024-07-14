@@ -122,7 +122,7 @@ class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
           InkWell(
             onTap: () {
               setState(() {
-                provider.paymentTypeSet = 'mada';
+                provider.paymentTypeSet = 'moyasar';
                 choose = 2;
               });
             },
@@ -163,7 +163,7 @@ class _ChoosePaymentMethodState extends State<ChoosePaymentMethod> {
           InkWell(
             onTap: () {
               setState(() {
-                provider.paymentTypeSet = 'taby';
+                provider.paymentTypeSet = 'tabby';
                 choose = 3;
               });
             },

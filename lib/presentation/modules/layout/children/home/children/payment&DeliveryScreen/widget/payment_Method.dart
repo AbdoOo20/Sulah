@@ -64,9 +64,9 @@ class PaymentMethod extends StatelessWidget {
                                 .customColor(AppColors.black),
                             text: provider == 'cash'
                                 ? LocaleKeys.cash.tr()
-                                : provider == 'mada'
+                                : provider == 'moyasar'
                                     ? LocaleKeys.madaPay.tr()
-                                    : provider == 'taby'
+                                    : provider == 'tabby'
                                         ? LocaleKeys.tabyPay.tr()
                                         : '',
                           ),
