@@ -104,10 +104,9 @@ class OfferProvider with ChangeNotifier {
         products.add(ProductOffer.fromJson(e, false));
       });
       response.data['data']['myoffers'].forEach((e) {
-        log(e.toString());
-        log('-----------------------------------------------------');
         offers.add(ProductOffer.fromJson(e, true));
       });
+      offers.sort((a,b) => b.id.compareTo(a.id));
     } else {
       isLoading = false;
       ToastUtils.showToast(response.data['message']);

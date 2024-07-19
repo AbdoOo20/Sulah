@@ -338,7 +338,7 @@ class _OfferItemState extends State<OfferItem> {
                             icon: Icon(Icons.add_circle,
                                 color: AppColors.primaryColor),
                           ),
-                        if (widget.isOffer)
+                        if (widget.isOffer && widget.product.offers.isEmpty)
                           IconButton(
                             onPressed: () {
                               offerProvider.deleteOffer(
