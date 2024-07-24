@@ -121,6 +121,12 @@ class AuthViewModel with ChangeNotifier {
     return responseModel;
   }
 
+  void skipButton() {
+    saveUserData.saveUserToken('');
+    phoneController.text = '';
+    pushAndRemoveUntil(const CustomBottomNavigationBar(0));
+  }
+
   Future<ApiResponse> register(
       BuildContext context, RegisterBody? registerBody) async {
     _isLoading = true;

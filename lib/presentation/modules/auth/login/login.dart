@@ -85,12 +85,24 @@ class _LoginState extends State<Login> {
               height: 50.h,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SVGIcon(
                   Assets.logo,
                   height: 50.h,
                   width: 150.w,
+                ),
+                CustomButton(
+                  color: AppColors.lightGray,
+                  textColor: AppColors.primaryColor,
+                  borderColor: AppColors.primaryColor,
+                  loading: isLoading,
+                  onTap: () {
+                    Provider.of<AuthViewModel>(context, listen: false)
+                        .skipButton();
+                  },
+                  width: 100.w,
+                  title: tr(LocaleKeys.skip),
                 ),
               ],
             ),
