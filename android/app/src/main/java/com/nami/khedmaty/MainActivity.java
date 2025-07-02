@@ -1,4 +1,4 @@
-package com.user.sulah;
+package com.users.sulahapp;
 
 import io.flutter.embedding.android.FlutterActivity;
 

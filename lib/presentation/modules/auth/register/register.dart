@@ -64,6 +64,11 @@ class _RegisterState extends State<Register> {
         } else if (phone.length < 7) {
           Provider.of<AuthViewModel>(context, listen: false).validationMsg =
               LocaleKeys.msgInvalidPhoneNumber.tr();
+        }else if (Provider.of<AuthViewModel>(context, listen: false)
+            .confirmPasswordController.text.trim() != Provider.of<AuthViewModel>(context, listen: false)
+            .passwordController.text.trim()) {
+          ToastUtils.showToast(LocaleKeys.msgInvalidPasswordNotMatch.tr());
+
         } else {
           registerBody.firstName = _firstNameController.text;
           registerBody.lastName = _lastNameController.text;
@@ -81,6 +86,9 @@ class _RegisterState extends State<Register> {
                 .clear();
             Provider.of<AuthViewModel>(context, listen: false)
                 .passwordController
+                .clear();
+            Provider.of<AuthViewModel>(context, listen: false)
+                .confirmPasswordController
                 .clear();
             _firstNameController.clear();
             _lastNameController.clear();
@@ -108,44 +116,44 @@ class _RegisterState extends State<Register> {
               Expanded(
                 child: ListAnimator(
                   children: [
-                    InkWell(
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(20.r),
-                            )),
-                            builder: (BuildContext context) {
-                              return SafeArea(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    ListTile(
-                                      leading: const Icon(Icons.camera_alt),
-                                      title: Text('takePicture'.tr()),
-                                      onTap: () {
-                                        _getImage(ImageSource.camera);
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                    ListTile(
-                                      leading: const Icon(Icons.image),
-                                      title: Text('chooseFromGallery'.tr()),
-                                      onTap: () {
-                                        _getImage(ImageSource.gallery);
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: PickerPart(
-                          image: _image,
-                        )),
+                    // InkWell(
+                    //     onTap: () {
+                    //       showModalBottomSheet(
+                    //         context: context,
+                    //         shape: RoundedRectangleBorder(
+                    //             borderRadius: BorderRadius.vertical(
+                    //           top: Radius.circular(20.r),
+                    //         )),
+                    //         builder: (BuildContext context) {
+                    //           return SafeArea(
+                    //             child: Column(
+                    //               mainAxisSize: MainAxisSize.min,
+                    //               children: <Widget>[
+                    //                 ListTile(
+                    //                   leading: const Icon(Icons.camera_alt),
+                    //                   title: Text('takePicture'.tr()),
+                    //                   onTap: () {
+                    //                     _getImage(ImageSource.camera);
+                    //                     Navigator.pop(context);
+                    //                   },
+                    //                 ),
+                    //                 ListTile(
+                    //                   leading: const Icon(Icons.image),
+                    //                   title: Text('chooseFromGallery'.tr()),
+                    //                   onTap: () {
+                    //                     _getImage(ImageSource.gallery);
+                    //                     Navigator.pop(context);
+                    //                   },
+                    //                 ),
+                    //               ],
+                    //             ),
+                    //           );
+                    //         },
+                    //       );
+                    //     },
+                    //     child: PickerPart(
+                    //       image: _image,
+                    //     )),
                     VerticalSpace(AppSize.s32.h),
                     _buildForm(),
                     VerticalSpace(AppSize.s8.h),
@@ -190,53 +198,53 @@ class _RegisterState extends State<Register> {
             ],
           ),
           VerticalSpace(AppSize.s24.h),
-          InkWell(
-            onTap: () {
-              showChangeCountrySheet(context);
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              height: 56.h,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.r),
-                color: AppColors.grayLight,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SVGIcon(
-                        Provider.of<AuthViewModel>(context, listen: true)
-                                    .phoneCode ==
-                                '+966'
-                            ? Assets.flag
-                            : Assets.flagEgypt,
-                        width: 48.w,
-                        height: 32.h,
-                      ),
-                      HorizontalSpace(12.w),
-                      Text(
-                        Provider.of<AuthViewModel>(context, listen: true)
-                                    .phoneCode ==
-                                '+966'
-                            ? LocaleKeys.saudiArabia.tr()
-                            : LocaleKeys.egypt.tr(),
-                        style: const TextStyle()
-                            .bodyStyle()
-                            .customColor(AppColors.black),
-                      ),
-                    ],
-                  ),
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    size: 16.r,
-                  )
-                ],
-              ),
-            ),
-          ),
+          // InkWell(
+          //   onTap: () {
+          //     showChangeCountrySheet(context);
+          //   },
+          //   child: Container(
+          //     padding: EdgeInsets.symmetric(horizontal: 16.w),
+          //     height: 56.h,
+          //     width: MediaQuery.of(context).size.width,
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(16.r),
+          //       color: AppColors.grayLight,
+          //     ),
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: [
+          //         Row(
+          //           children: [
+          //             SVGIcon(
+          //               Provider.of<AuthViewModel>(context, listen: true)
+          //                           .phoneCode ==
+          //                       '+966'
+          //                   ? Assets.flag
+          //                   : Assets.flagEgypt,
+          //               width: 48.w,
+          //               height: 32.h,
+          //             ),
+          //             HorizontalSpace(12.w),
+          //             Text(
+          //               Provider.of<AuthViewModel>(context, listen: true)
+          //                           .phoneCode ==
+          //                       '+966'
+          //                   ? LocaleKeys.saudiArabia.tr()
+          //                   : LocaleKeys.egypt.tr(),
+          //               style: const TextStyle()
+          //                   .bodyStyle()
+          //                   .customColor(AppColors.black),
+          //             ),
+          //           ],
+          //         ),
+          //         Icon(
+          //           Icons.keyboard_arrow_down,
+          //           size: 16.r,
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
           VerticalSpace(AppSize.s8.h),
           CustomTextFieldPhone(
             noBorder: false,
@@ -254,6 +262,14 @@ class _RegisterState extends State<Register> {
             iconSVG: Assets.svgPasswordIcon,
             controller: Provider.of<AuthViewModel>(context, listen: false)
                 .passwordController,
+          ),
+          VerticalSpace(AppSize.s8.h),
+          CustomTextFieldPassword(
+            noBorder: false,
+            hint: LocaleKeys.confirmPassword.tr(),
+            iconSVG: Assets.svgPasswordIcon,
+            controller: Provider.of<AuthViewModel>(context, listen: false)
+                .confirmPasswordController,
           ),
         ],
       ),

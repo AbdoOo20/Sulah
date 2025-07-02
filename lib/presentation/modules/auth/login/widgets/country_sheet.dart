@@ -17,7 +17,7 @@ class CountrySheet extends StatefulWidget {
 
 class _CountrySheetState extends State<CountrySheet> {
   final tag = 'ChangeCountrySheet';
-  late String code=Provider.of<AuthViewModel>(context, listen: false).phoneCode ;
+  late String code= '+966' ;
   void _onCountrySelected() {
     Navigator.pop(context);
     Provider.of<AuthViewModel>(context, listen: false).phoneCodeCountry=code;

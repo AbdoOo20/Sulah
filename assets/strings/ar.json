@@ -41,6 +41,7 @@
   "invited": "مدعو بواسطة مستخدم ؟",
   "enterCode": "ادخل الكودد",
   "msgInvalidPhoneNumber": "رقم الهاتف غير صحيح",
+  "msgInvalidPasswordNotMatch": "كلمة المرور غير متطابقة",
   "phoneMustBeEntered": "يجب إدخال رقم الهاتف",
   "phoneNotRegistered": "رقم الهاتف غير مسجل",
   "msgFormFieldRequired": "الحقل مطلوب",
@@ -237,5 +238,6 @@
   "acceptOrder": "تم قبول عرض على هذا المنتج بقيمة",
   "paymentWait": "انتظر الدفع",
   "paymentAccept": "تم الدفع",
-  "refuseOrder": "تم رفض عرض"
+  "refuseOrder": "تم رفض عرض",
+  "confirmPassword": "تأكيد كلمة المرور"
 }

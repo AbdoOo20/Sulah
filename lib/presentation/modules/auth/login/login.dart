@@ -120,53 +120,53 @@ class _LoginState extends State<Login> {
                   .customColor(AppColors.gray),
             ),
             VerticalSpace(AppSize.s24.h),
-            InkWell(
-              onTap: () {
-                showChangeCountrySheet(context);
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                height: 56.h,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.r),
-                  color: AppColors.grayLight,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        SVGIcon(
-                          Provider.of<AuthViewModel>(context, listen: true)
-                                      .phoneCode ==
-                                  '+966'
-                              ? Assets.flag
-                              : Assets.flagEgypt,
-                          width: 48.w,
-                          height: 32.h,
-                        ),
-                        HorizontalSpace(12.w),
-                        Text(
-                          Provider.of<AuthViewModel>(context, listen: true)
-                                      .phoneCode ==
-                                  '+966'
-                              ? LocaleKeys.saudiArabia.tr()
-                              : LocaleKeys.egypt.tr(),
-                          style: const TextStyle()
-                              .bodyStyle()
-                              .customColor(AppColors.black),
-                        ),
-                      ],
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_down,
-                      size: 16.r,
-                    )
-                  ],
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     showChangeCountrySheet(context);
+            //   },
+            //   child: Container(
+            //     padding: EdgeInsets.symmetric(horizontal: 16.w),
+            //     height: 56.h,
+            //     width: MediaQuery.of(context).size.width,
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(16.r),
+            //       color: AppColors.grayLight,
+            //     ),
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         Row(
+            //           children: [
+            //             SVGIcon(
+            //               Provider.of<AuthViewModel>(context, listen: true)
+            //                           .phoneCode ==
+            //                       '+966'
+            //                   ? Assets.flag
+            //                   : Assets.flagEgypt,
+            //               width: 48.w,
+            //               height: 32.h,
+            //             ),
+            //             HorizontalSpace(12.w),
+            //             Text(
+            //               Provider.of<AuthViewModel>(context, listen: true)
+            //                           .phoneCode ==
+            //                       '+966'
+            //                   ? LocaleKeys.saudiArabia.tr()
+            //                   : LocaleKeys.egypt.tr(),
+            //               style: const TextStyle()
+            //                   .bodyStyle()
+            //                   .customColor(AppColors.black),
+            //             ),
+            //           ],
+            //         ),
+            //         Icon(
+            //           Icons.keyboard_arrow_down,
+            //           size: 16.r,
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
             VerticalSpace(AppSize.s4.h),
             _buildForm(),
             VerticalSpace(AppSize.s4.h),

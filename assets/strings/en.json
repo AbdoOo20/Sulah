@@ -63,6 +63,7 @@
   "invited": "invited by user?",
   "enterCode": "Enter Code",
   "msgInvalidPhoneNumber": "Invalid Phone Number",
+  "msgInvalidPasswordNotMatch": "Password Not Match",
   "phoneMustBeEntered": "Phone Must Be Entered",
   "phoneNotRegistered": "The phone number is not registered",
   "msgFormFieldRequired": "Form Field Required",
@@ -236,5 +237,6 @@
   "acceptOrder": "An offer has been accepted for this product",
   "paymentWait": "Wait Payment",
   "paymentAccept": "Payment Confirmed",
-  "refuseOrder": "Offer Refused"
+  "refuseOrder": "Offer Refused",
+  "confirmPassword": "Confirm Password"
 }

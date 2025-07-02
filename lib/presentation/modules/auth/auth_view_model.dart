@@ -40,6 +40,7 @@ class AuthViewModel with ChangeNotifier {
   bool _isClicked = false;
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   ///getters
   bool get isLoading => _isLoading;
