@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/presentation/modules/layout/children/offers/offer%20view%20model.dart';
-import 'package:khedmaty/presentation/modules/layout/children/offers/widgets/offer%20item.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/presentation/modules/layout/children/offers/offer%20view%20model.dart';
+import 'package:sulah/presentation/modules/layout/children/offers/widgets/offer%20item.dart';
 import 'package:provider/provider.dart';
 import '../../../../../core/res/text_styles.dart';
 import '../../../../../core/resources/app_colors.dart';

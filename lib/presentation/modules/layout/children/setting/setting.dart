@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/presentation/modules/auth/login/login.dart';
-import 'package:khedmaty/presentation/modules/layout/children/setting/widget/delete_account_dialog.dart';
-import 'package:khedmaty/presentation/modules/layout/children/setting/widget/logout_dialog.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/presentation/modules/auth/login/login.dart';
+import 'package:sulah/presentation/modules/layout/children/setting/widget/delete_account_dialog.dart';
+import 'package:sulah/presentation/modules/layout/children/setting/widget/logout_dialog.dart';
 
 import '../../../../../core/helper/socialMediaHelper.dart';
 import '../../../../../core/res/text_styles.dart';
@@ -110,7 +110,7 @@ class _MyAccountState extends State<MyAccount> {
                     image: Assets.appEvaluation,
                     title: tr(LocaleKeys.appEvaluation),
                     onTap: () {
-                      // SocialMediaHelper().openStore("com.apps.khedmaty", "");
+                      // SocialMediaHelper().openStore("com.apps.sulah", "");
                     },
                   ),
                   _buildItem(

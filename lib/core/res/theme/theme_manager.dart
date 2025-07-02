@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/res/theme/styles_manager.dart';
-import 'package:khedmaty/core/res/theme/value_manager.dart';
-import 'package:khedmaty/core/resources/app_colors.dart';
+import 'package:sulah/core/res/theme/styles_manager.dart';
+import 'package:sulah/core/res/theme/value_manager.dart';
+import 'package:sulah/core/resources/app_colors.dart';
 
 import '../../resources/font_manager.dart';
 
@@ -37,12 +37,12 @@ ThemeData getAppTheme(){
       style: ElevatedButton.styleFrom(
         textStyle: getRegularStyle(color: AppColors.primaryColor,
 
-        ),primary: AppColors.primaryColor,
+        ),
       )
     ),
 
     //CARED THEME
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: AppColors.primaryColor,
       shadowColor: AppColors.primaryColor,
       elevation: AppSize.s4,

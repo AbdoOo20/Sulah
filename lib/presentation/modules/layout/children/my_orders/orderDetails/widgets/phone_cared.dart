@@ -1,7 +1,7 @@
 // import 'package:cached_network_image/cached_network_image.dart';
 // import 'package:flutter/material.dart';
-// import 'package:khedmaty/core/extensions/num_extensions.dart';
-// import 'package:khedmaty/core/routing/route.dart';
+// import 'package:sulah/core/extensions/num_extensions.dart';
+// import 'package:sulah/core/routing/route.dart';
 // import '../../../../../../core/res/text_styles.dart';
 // import '../../../../../../core/resources/app_colors.dart';
 // import '../../../../../core/helper/socialMediaHelper.dart';

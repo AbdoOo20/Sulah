@@ -1,6 +1,6 @@
 {
-    "name": "khedmaty_main",
-    "short_name": "khedmaty_main",
+    "name": "sulah_main",
+    "short_name": "sulah_main",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

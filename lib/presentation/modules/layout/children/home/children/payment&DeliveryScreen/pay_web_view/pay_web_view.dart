@@ -23,8 +23,8 @@ final String link;
 }
 
 class _PayWebViewScreenState extends State<PayWebViewScreen> {
-  String filedUrl ='https://khedmaty-sa.com/api/user/endPayment?status=false';
-  String successUrl ='https://khedmaty-sa.com/api/user/endPayment?status=true';
+  String filedUrl ='https://sulah-sa.com/api/user/endPayment?status=false';
+  String successUrl ='https://sulah-sa.com/api/user/endPayment?status=true';
   WebViewController? _webViewController;
   String _currentUrl = '';
 

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
 
 import '../../../../core/resources/app_assets.dart';
 import '../../../../core/resources/locale_keys.g.dart';

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:khedmaty/presentation/modules/auth/login/login.dart';
+import 'package:sulah/presentation/modules/auth/login/login.dart';
 
 import '../../../../core/routing/route.dart';
 import '../../../model/response/base/error_response.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/data/model/response/productsModel.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/data/model/response/productsModel.dart';
 
 import 'custom_card_products.dart';
 

@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/data/repository/SaveUserData.dart';
-import 'package:khedmaty/injection.dart';
-import 'package:khedmaty/presentation/component/component.dart';
-import 'package:khedmaty/presentation/modules/auth/login/login.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/data/repository/SaveUserData.dart';
+import 'package:sulah/injection.dart';
+import 'package:sulah/presentation/component/component.dart';
+import 'package:sulah/presentation/modules/auth/login/login.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../core/res/text_styles.dart';

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/core/res/color.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/core/res/color.dart';
 import '../../../../core/res/text_styles.dart';
 import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/locale_keys.g.dart';

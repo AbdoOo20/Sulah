@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
 import 'package:provider/provider.dart';
 
 

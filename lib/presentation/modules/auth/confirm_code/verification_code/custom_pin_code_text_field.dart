@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/core/resources/app_colors.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/core/resources/app_colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 

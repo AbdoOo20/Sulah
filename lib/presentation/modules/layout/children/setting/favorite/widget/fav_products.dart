@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../component/screen_state_layout.dart';

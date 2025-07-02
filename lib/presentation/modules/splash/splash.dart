@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/routing/route.dart';
-import 'package:khedmaty/injection.dart';
-import 'package:khedmaty/presentation/component/component.dart';
+import 'package:sulah/core/routing/route.dart';
+import 'package:sulah/injection.dart';
+import 'package:sulah/presentation/component/component.dart';
 import '../../../core/resources/app_assets.dart';
 import '../../../core/resources/app_colors.dart';
 import '../../../data/repository/SaveUserData.dart';

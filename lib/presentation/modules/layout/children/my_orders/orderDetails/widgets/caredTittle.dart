@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/core/resources/resources.dart';
-import 'package:khedmaty/presentation/component/component.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/core/resources/resources.dart';
+import 'package:sulah/presentation/component/component.dart';
 
 import '../../../../../../../core/res/text_styles.dart';
 import '../../../../../../../data/model/response/myOrdersModel.dart';

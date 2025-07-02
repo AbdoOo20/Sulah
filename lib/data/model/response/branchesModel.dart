@@ -1,5 +1,5 @@
 
-import 'package:khedmaty/data/model/response/nearBranchModel.dart';
+import 'package:sulah/data/model/response/nearBranchModel.dart';
 
 class BranchesModel {
   List<OneBranch>? data;

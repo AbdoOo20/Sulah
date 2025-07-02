@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:khedmaty/data/model/response/one_store_model.dart';
-import 'package:khedmaty/data/model/response/store_rate_model.dart';
-import 'package:khedmaty/data/repository/SaveUserData.dart';
+import 'package:sulah/data/model/response/one_store_model.dart';
+import 'package:sulah/data/model/response/store_rate_model.dart';
+import 'package:sulah/data/repository/SaveUserData.dart';
 
 import '../../../../../../../core/api_checker.dart';
 import '../../../../../../../core/utils/showToast.dart';

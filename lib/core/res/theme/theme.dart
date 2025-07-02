@@ -12,7 +12,6 @@ ThemeData get lightTheme {
   return ThemeData(
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     textTheme: textTheme,
-    backgroundColor: scaffoldBackgroundColor,
     cardColor: cardColor,
     brightness: Brightness.light,
     splashColor: primaryColor,
@@ -24,7 +23,6 @@ ThemeData get lightTheme {
     hoverColor: hoverColor,
     floatingActionButtonTheme: floatingActionButtonTheme,
     dividerColor: dividerColor,
-    errorColor: errorColor,
     // hintColor: textSecondary,
     primaryColor: primaryColor,
     primaryColorDark: primaryColorDark,
@@ -42,7 +40,6 @@ ThemeData get lightTheme {
 
     primaryColorLight: primaryColorLight,
     disabledColor: unselectedWidgetColor,
-    toggleableActiveColor: primaryColor,
 
     /// Text fields
     inputDecorationTheme: kInputDecorationTheme,
@@ -100,7 +97,6 @@ ThemeData get darkTheme {
     // accentColor: accentColorDark,
     floatingActionButtonTheme: floatingActionButtonThemeDark,
     dividerColor: dividerColorDark,
-    errorColor: errorColorDark,
     hintColor: textSecondaryDark,
     primaryColor: primaryColorDark,
     bottomNavigationBarTheme: bottomNavigationBarThemeDark,

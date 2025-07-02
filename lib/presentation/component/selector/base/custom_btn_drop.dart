@@ -2,8 +2,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/core/res/text_styles.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/core/res/text_styles.dart';
 
 import '../../../../../core/resources/values_manager.dart';
 import '../../../../core/resources/app_colors.dart';
@@ -66,7 +66,7 @@ class CustomButtonArrow extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.all(Radius.circular(kFormRadiusSmall.r),),
-                  border: Border.all(color:error!=null? Theme.of(context).errorColor: AppColors.grayLight)),
+                  border: Border.all(color:error!=null? Theme.of(context).primaryColorLight: AppColors.grayLight)),
               padding:  EdgeInsets.symmetric(horizontal: 12.w,vertical: 8.h),
               child: loading
                   ? Center(
@@ -135,7 +135,7 @@ class CustomButtonArrow extends StatelessWidget {
                     style: Theme.of(context)
                         .inputDecorationTheme
                         .errorStyle
-                        ?.copyWith(color: Theme.of(context).errorColor),
+                        ?.copyWith(color: Theme.of(context).disabledColor),
                   ),
                 ],
               )

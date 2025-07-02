@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/core/helper/no_data.dart';
-import 'package:khedmaty/data/model/response/storesModel.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/core/helper/no_data.dart';
+import 'package:sulah/data/model/response/storesModel.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../../../../core/res/text_styles.dart';

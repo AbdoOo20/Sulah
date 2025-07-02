@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/res/text_styles.dart';
-import 'package:khedmaty/presentation/component/inputs/new/customTextFormField.dart';
+import 'package:sulah/core/res/text_styles.dart';
+import 'package:sulah/presentation/component/inputs/new/customTextFormField.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/data/model/body/update_profile_body.dart';
-import 'package:khedmaty/presentation/component/component.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/data/model/body/update_profile_body.dart';
+import 'package:sulah/presentation/component/component.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../core/resources/app_colors.dart';

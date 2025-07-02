@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/core/res/text_styles.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/core/res/text_styles.dart';
 
 import '../../../../../../core/resources/resources.dart';
 import '../../../../../../core/routing/route.dart';

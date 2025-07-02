@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:khedmaty/core/routing/route.dart';
-import 'package:khedmaty/data/model/response/base/emptyDataModel.dart';
-import 'package:khedmaty/presentation/modules/auth/login/login.dart';
+import 'package:sulah/core/routing/route.dart';
+import 'package:sulah/data/model/response/base/emptyDataModel.dart';
+import 'package:sulah/presentation/modules/auth/login/login.dart';
 
 import '../../../../../core/api_checker.dart';
 import '../../../../../core/utils/showToast.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/routing/route.dart';
-import 'package:khedmaty/injection.dart';
-import 'package:khedmaty/presentation/modules/layout/children/home/home.dart';
+import 'package:sulah/core/routing/route.dart';
+import 'package:sulah/injection.dart';
+import 'package:sulah/presentation/modules/layout/children/home/home.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../../core/api_checker.dart';

@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/core/extensions/num_extensions.dart';
-import 'package:khedmaty/core/res/text_styles.dart';
-import 'package:khedmaty/core/resources/app_assets.dart';
-import 'package:khedmaty/core/resources/app_colors.dart';
-import 'package:khedmaty/core/resources/locale_keys.g.dart';
-import 'package:khedmaty/injection.dart';
-import 'package:khedmaty/presentation/component/component.dart';
-import 'package:khedmaty/presentation/modules/layout/children/offers/offer%20screen.dart';
+import 'package:sulah/core/extensions/num_extensions.dart';
+import 'package:sulah/core/res/text_styles.dart';
+import 'package:sulah/core/resources/app_assets.dart';
+import 'package:sulah/core/resources/app_colors.dart';
+import 'package:sulah/core/resources/locale_keys.g.dart';
+import 'package:sulah/injection.dart';
+import 'package:sulah/presentation/component/component.dart';
+import 'package:sulah/presentation/modules/layout/children/offers/offer%20screen.dart';
 import '../../component/svg_icon.dart';
 import '../layout/children/category/category.dart';
 import '../layout/children/home/home.dart';
@@ -72,7 +72,7 @@ class _BottomNavigationBar extends State<CustomBottomNavigationBar> {
               Assets.homeIcon,
               color: AppColors.primaryColor,
             ),
-            label: tr("khedmaty"),
+            label: tr("sulah"),
           ),
           BottomNavigationBarItem(
             icon: const SVGIcon(

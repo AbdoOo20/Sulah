@@ -56,7 +56,7 @@ Future<dynamic> showQuestionDialog(
     //   ),
     // ),
     btnOkColor: Colors.green,
-    btnCancelColor: Theme.of(context).errorColor,
+    btnCancelColor: Theme.of(context).disabledColor,
     descTextStyle: TextStyles().getDescriptionStyle(),
     alignment: AlignmentDirectional.centerStart,
     showCloseIcon: true,

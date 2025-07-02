@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:khedmaty/presentation/modules/layout/children/home/children/products/productsViewModel.dart';
-import 'package:khedmaty/presentation/modules/layout/children/home/children/shoppingCard/shopping_cared_view_model.dart';
-import 'package:khedmaty/presentation/modules/layout/children/home/homeViewModel.dart';
-import 'package:khedmaty/presentation/modules/layout/children/my_orders/my_orders_view_model.dart';
-import 'package:khedmaty/presentation/modules/layout/children/offers/offer%20view%20model.dart';
-import 'package:khedmaty/presentation/modules/layout/children/setting/settingViewModel.dart';
+import 'package:sulah/presentation/modules/layout/children/home/children/products/productsViewModel.dart';
+import 'package:sulah/presentation/modules/layout/children/home/children/shoppingCard/shopping_cared_view_model.dart';
+import 'package:sulah/presentation/modules/layout/children/home/homeViewModel.dart';
+import 'package:sulah/presentation/modules/layout/children/my_orders/my_orders_view_model.dart';
+import 'package:sulah/presentation/modules/layout/children/offers/offer%20view%20model.dart';
+import 'package:sulah/presentation/modules/layout/children/setting/settingViewModel.dart';
 import 'package:provider/provider.dart';
 import 'data/datasource/locale/database_provider.dart';
 import 'injection.dart';

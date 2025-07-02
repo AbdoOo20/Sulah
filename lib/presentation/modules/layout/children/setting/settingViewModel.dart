@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:khedmaty/data/repository/Setting_Repo.dart';
-import 'package:khedmaty/data/repository/products_Repo.dart';
+import 'package:sulah/data/repository/Setting_Repo.dart';
+import 'package:sulah/data/repository/products_Repo.dart';
 import 'package:provider/provider.dart';
 import '../../../../../core/api_checker.dart';
 import '../../../../../core/utils/showToast.dart';
